@@ -1,0 +1,41 @@
+version: '3'
+services:
+  wordpress:
+    image: wordpress:php7.3-fpm
+    container_name: app
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      - WORDPRESS_DB_NAME=divalesi_inverno2019
+      - WORDPRESS_TABLE_PREFIX=div
+      - WORDPRESS_DB_HOST=mysql
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=test
+    depends_on:
+      - mysql
+    restart: always
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_PASSWORD=test
+      - MYSQL_DATABASE=divalesi_inverno2019
+    restart: always
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ${NGINX_CONF_DIR:-./nginx}:/etc/nginx/conf.d
+      - ${NGINX_LOG_DIR:-./logs/nginx}:/var/log/nginx
+      - ${WORDPRESS_DATA_DIR:-./app}:/var/www/html
+      - ${SSL_CERTS_DIR:-./certs}:/etc/letsencrypt
+      - ${SSL_CERTS_DATA_DIR:-./certs-data}:/data/letsencrypt
+    depends_on:
+      - wordpress
+    restart: always
