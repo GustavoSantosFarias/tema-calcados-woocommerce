@@ -1,15 +1,16 @@
 <?php
 
-function mytheme_add_woocommerce_support() {
-    add_theme_support( 'woocommerce' );
+function divalesi_add_woocommerce_support() {
+    add_theme_support('woocommerce');
+    add_theme_support('wc-product-gallery-zoom');
 }
-add_action( 'after_setup_theme', 'mytheme_add_woocommerce_support' );
+add_action('after_setup_theme', 'divalesi_add_woocommerce_support');
+add_filter('woocommerce_enqueue_styles', '__return_false');
 
 function load_setup_theme(){
     require __DIR__."/inc/setup.php";
 }
 add_action("init","load_setup_theme");
-
 
 function products_featureds(){
     get_template_part("inc/templates/products_featureds_view");
