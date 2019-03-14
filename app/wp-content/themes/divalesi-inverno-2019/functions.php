@@ -13,7 +13,7 @@ function load_setup_theme(){
 add_action("init","load_setup_theme");
 
 function products_featureds(){
-    get_template_part("inc/templates/products_featureds_view");
+    require_once "inc/src/products_featureds.php";
 }
 add_action("content_products_featureds","products_featureds");
 
