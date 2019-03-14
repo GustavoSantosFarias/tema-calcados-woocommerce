@@ -18,7 +18,7 @@ function products_featureds(){
 add_action("content_products_featureds","products_featureds");
 
 function categories_home(){
-    get_template_part("inc/templates/categories_home_view");
+    require_once "inc/src/categories.php";
 }
 add_action("content_categories_home","categories_home");
 
