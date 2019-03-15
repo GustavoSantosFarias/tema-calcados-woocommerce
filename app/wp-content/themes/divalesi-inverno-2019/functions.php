@@ -13,12 +13,18 @@ function load_setup_theme(){
 add_action("init","load_setup_theme");
 
 function products_featureds(){
-    require_once "inc/src/products_featureds.php";
+    $template = THEME_TEMPLATES_DIR."products_featureds_view.php";
+    $loop_categories = new Divalesi\ProductLoop($template);
+
+    $loop_categories->getProductsFeatureds();
 }
 add_action("content_products_featureds","products_featureds");
 
 function categories_home(){
-    require_once "inc/src/categories.php";
+    $template = THEME_TEMPLATES_DIR."categories_home_view.php";
+    $loop_categories = new Divalesi\CategoryLoop($template);
+
+    $loop_categories->getCategoriesTemplate();
 }
 add_action("content_categories_home","categories_home");
 
