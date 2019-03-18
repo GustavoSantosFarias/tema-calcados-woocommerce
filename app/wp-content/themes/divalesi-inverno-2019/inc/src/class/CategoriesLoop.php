@@ -2,7 +2,7 @@
 
 namespace Divalesi;
 
-class CategoiesLoop extends Divalesi\Loop{
+class CategoriesLoop extends Loop{
 
     private $data = array();
 

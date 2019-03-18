@@ -1,3 +1,3 @@
 <?php
 
-echo $regular_price;
+echo $this->data["regular_price"];

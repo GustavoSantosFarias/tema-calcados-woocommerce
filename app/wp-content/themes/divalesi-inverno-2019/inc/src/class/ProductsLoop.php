@@ -2,7 +2,7 @@
 
 namespace Divalesi;
 
-class ProductsLoop extends Divalesi\Loop{
+class ProductsLoop extends Loop{
 
     private $data = array();
 
@@ -10,10 +10,15 @@ class ProductsLoop extends Divalesi\Loop{
         parent::__construct($path_template);
     }
 
-    public function getProductsFeatureds(){
+
+    /**
+     * Get all featured products with regular price, sale price, main image and first gallery image
+     * @return featured product template
+     * 
+     */
+    public function featureds(){
         $args = array(
             'post_type' => 'product',
-            'posts_per_page' => 7,
             'tax_query' => array(
                     array(
                         'taxonomy' => 'product_visibility',
@@ -22,27 +27,38 @@ class ProductsLoop extends Divalesi\Loop{
                     ),
                 ),
         );
-        $query = new WP_Query($args);
+        $query = new \WP_Query($args);
 
         if ($query->have_posts()) {
             while($query->have_posts()){
-                global $product;
                 $query->the_post();
+                global $product;
 
-                $variation = (new WC_Product_Variable(get_the_ID()))->get_available_variations(get_the_ID());
+                $variation = (new \WC_Product_Variable(get_the_ID()))->get_available_variations(get_the_ID());
                 $gallery_image_id = $product->get_gallery_attachment_ids();
 
-                $data["regular_price"] = $variation[0]["display_regular_price"];
-                $data["sale_price"] = $variation[0]["display_price"];
-                $data["image"] = get_the_post_thumbnail_url();
-                $data["gallery_image"] = wp_get_attachment_image_src($gallery_image_id[0],'full')[0];
+                $this->data["regular_price"] = $variation[0]["display_regular_price"];
+                $this->data["sale_price"] = $variation[0]["display_price"];
+                $this->data["image"] = get_the_post_thumbnail_url();
+                $this->data["gallery_image"] = wp_get_attachment_image_src($gallery_image_id[0],'full')[0];
 
                 include $this->template;
             }
         }
     }
 
-    public function getProducts(string $filter){
+    /**
+     * Get products with regular price, sale price, main image and first gallery image.
+     * If the @param filter isn't empty, the products that will be filtered by it value. Otherwise,
+     * all products will showed in shop page.  
+     * If the @param products_per_page isn't null, it will define the products quantity get from database in each pagination page.
+     * 
+     * @param products_per_page products quantity get from database in each pagination page.
+     * @param filter define the products that will be filtered by it value.
+     * 
+     * @return products shop template.
+     */
+    public function get(int $products_per_page = null,string $filter = ""){
 
     }
 

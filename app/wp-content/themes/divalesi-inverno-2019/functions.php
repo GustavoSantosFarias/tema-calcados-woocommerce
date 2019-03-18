@@ -14,15 +14,15 @@ add_action("init","load_setup_theme");
 
 function products_featureds(){
     $template = THEME_TEMPLATES_DIR."products_featureds_view.php";
-    $loop_categories = new Divalesi\ProductLoop($template);
+    $loop_products = new Divalesi\ProductsLoop($template);
 
-    $loop_categories->getProductsFeatureds();
+    $loop_products->featureds();
 }
 add_action("content_products_featureds","products_featureds");
 
 function categories_home(){
     $template = THEME_TEMPLATES_DIR."categories_home_view.php";
-    $loop_categories = new Divalesi\CategoryLoop($template);
+    $loop_categories = new Divalesi\CategoriesLoop($template);
 
     $loop_categories->getCategoriesTemplate();
 }
