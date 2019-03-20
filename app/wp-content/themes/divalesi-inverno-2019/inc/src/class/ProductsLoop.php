@@ -49,17 +49,29 @@ class ProductsLoop extends Loop{
 
     /**
      * Get products with regular price, sale price, main image and first gallery image.
-     * If the @param filter isn't empty, the products that will be filtered by it value. Otherwise,
+     * If the @param filters isn't empty, the products that will be filtered by it value. Otherwise,
      * all products will showed in shop page.  
-     * If the @param products_per_page isn't null, it will define the products quantity get from database in each pagination page.
+     * If the @param products_per_page isn't -1, it will define the products quantity get from database in each pagination page.
      * 
      * @param products_per_page products quantity get from database in each pagination page.
-     * @param filter define the products that will be filtered by it value.
+     * @param filters define the products that will be filtered by it value.
      * 
      * @return products shop template.
      */
-    public function get(int $products_per_page = null,string $filter = ""){
-
+    public function get(int $products_per_page = -1,array $filters = array()){
+        $args = array(
+            'post_type'      => 'product',
+            'post_status' => 'publish',
+            'posts_per_page' => $products_per_page,
+            'tax_query' => '',
+            'meta_query' => array(
+                array(
+                    'key'     => '_product_attributes',
+                    'compare' => 'LIKE',
+                ),
+            ),
+            'post__in' => '',
+        );
     }
 
 }
