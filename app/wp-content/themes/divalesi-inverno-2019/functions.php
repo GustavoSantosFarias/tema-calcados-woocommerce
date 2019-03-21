@@ -16,7 +16,7 @@ function products_featureds(){
     $template = THEME_TEMPLATES_DIR."products_featureds_view.php";
     $loop_products = new Divalesi\ProductsLoop($template);
 
-    $loop_products->featureds();
+    $loop_products->get("featured");
 }
 add_action("content_products_featureds","products_featureds");
 

@@ -10,7 +10,7 @@ class CategoriesLoop extends Loop{
         parent::__construct($path_template);
     }
 
-    public function getCategoriesTemplate(){
+    public function get(){
         $args = array(
             'post_type' => 'product'
         );
@@ -23,7 +23,9 @@ class CategoriesLoop extends Loop{
             $this->data["category_image"] = wp_get_attachment_image_url($category_id_image,"full"); 
             $this->data["category_name"] = $category->name;
             $this->data["category_link"] = get_term_link( $category->term_id, 'product_cat' );;
-        
+            
+            extract($this->data);
+
             include $this->template;
         }
     }
