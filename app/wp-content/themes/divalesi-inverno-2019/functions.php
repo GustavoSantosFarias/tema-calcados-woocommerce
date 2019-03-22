@@ -39,3 +39,11 @@ function home(){
     do_action("content_categories_home");
 }
 add_action("content_home","home");
+
+function products_loop(){
+    $template = THEME_TEMPLATES_DIR."products_shop_view.php";
+    $loop_products = new Divalesi\ProductsLoop($template);
+
+    $loop_products->get("all",12);
+}
+add_action("divalesi_shop_loop","products_loop");

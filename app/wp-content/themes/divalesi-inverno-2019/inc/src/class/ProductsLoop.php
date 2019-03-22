@@ -51,6 +51,7 @@ class ProductsLoop extends Loop{
             'post_type'      => 'product',
             'post_status' => 'publish',
             'posts_per_page' => $products_per_page,
+            'paged' => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
             'tax_query' => isset($tax_query) ? $tax_query : array(),
             'meta_query' => array(
                 array(
