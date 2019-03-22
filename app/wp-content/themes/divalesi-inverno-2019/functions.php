@@ -24,7 +24,7 @@ function categories_home(){
     $template = THEME_TEMPLATES_DIR."categories_home_view.php";
     $loop_categories = new Divalesi\CategoriesLoop($template);
 
-    $loop_categories->getCategoriesTemplate();
+    $loop_categories->get();
 }
 add_action("content_categories_home","categories_home");
 
