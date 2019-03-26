@@ -8,7 +8,7 @@ class CategoriesLoop extends Loop{
 
     private $data = array();
 
-    public function __construct(string $path_template){
+    public function __construct(string $path_template = ""){
         parent::__construct($path_template);
     }
 
