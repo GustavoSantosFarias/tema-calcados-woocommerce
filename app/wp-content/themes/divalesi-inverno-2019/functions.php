@@ -14,15 +14,15 @@ add_action("init","load_setup_theme");
 
 function products_featureds(){
     $template = THEME_TEMPLATES_DIR."products_featureds_view.php";
-    $loop_products = new Divalesi\ProductsLoop($template);
+    $loop_products = new Divalesi\Product\ProductsLoop($template);
 
-    $loop_products->get("featured");
+    $loop_products->loop(-1,"featured");
 }
 add_action("content_products_featureds","products_featureds");
 
 function categories_home(){
     $template = THEME_TEMPLATES_DIR."categories_home_view.php";
-    $loop_categories = new Divalesi\CategoriesLoop($template);
+    $loop_categories = new Divalesi\Category\CategoriesLoop($template);
 
     $loop_categories->get();
 }
@@ -42,8 +42,8 @@ add_action("content_home","home");
 
 function products_loop(){
     $template = THEME_TEMPLATES_DIR."products_shop_view.php";
-    $loop_products = new Divalesi\ProductsLoop($template);
+    $loop_products = new Divalesi\Product\ProductsLoop($template);
 
-    $loop_products->get("all",12);
+    $loop_products->loop(12);
 }
 add_action("divalesi_shop_loop","products_loop");

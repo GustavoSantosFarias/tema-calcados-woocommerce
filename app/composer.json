@@ -1,0 +1,21 @@
+{
+    "name": "divalesi/app",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Gustavo Farias",
+            "email": "devgustavofarias@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Divalesi\\": "wp-content/themes/divalesi-inverno2019/inc/src/class"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}

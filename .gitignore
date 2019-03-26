@@ -5,6 +5,7 @@ certs-data/
 logs/
 nginx/
 app/wp-content/uploads/wc-logs
+app/vendor
 !.env_example
 !nginx/default*
 .yml*
