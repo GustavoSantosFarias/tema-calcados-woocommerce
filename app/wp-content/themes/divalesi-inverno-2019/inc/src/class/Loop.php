@@ -2,7 +2,7 @@
 
 namespace Divalesi;
 
-class Loop{
+abstract class Loop{
 
     protected $template;
 

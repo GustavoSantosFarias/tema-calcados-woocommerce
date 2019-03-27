@@ -41,6 +41,8 @@ get_header();
 
 <?php
 
+do_action("divalesi_shop_filters");
+
 /**
  * Hook: woocommerce_before_main_content.
  *

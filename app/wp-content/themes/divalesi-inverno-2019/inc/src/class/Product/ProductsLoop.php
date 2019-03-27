@@ -5,13 +5,17 @@ namespace Divalesi\Product;
 use \WP_Query;
 use \WC_Product_Variable;
 use Divalesi\Loop;
+use Divalesi\Filter\FilterLoop;
 
 class ProductsLoop extends Loop{
 
     private $data = array();
+    private $filters;
 
     public function __construct(string $path_template = ""){
         parent::__construct($path_template);
+
+        $this->filters = new FilterLoop;
     }
 
     /**
@@ -72,6 +76,10 @@ class ProductsLoop extends Loop{
 
                 $variation = (new WC_Product_Variable(get_the_ID()))->get_available_variations(get_the_ID());
                 $gallery_image_id = $product->get_gallery_attachment_ids();
+
+                if(count($this->filters->get()) < 7){
+                    $this->filters->set($variation);
+                }
 
                 $this->data["title"] = $product->get_title();
                 $this->data["regular_price"] = $variation[0]["display_regular_price"];
