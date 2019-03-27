@@ -1,1 +1,9 @@
-<img src="<?php echo $image?>" alt="">
+<li <?php wc_product_class(); ?>>
+    <a href="<?= $link ?>">
+        <img src="<?= $image ?>" alt="<?= $title ?>">
+        <div>
+            <h3><?= $title ?></h3>
+            <h5><?= wc_price($regular_price) ?></h5>
+        </div>
+    </a>
+</li>    
