@@ -49,7 +49,7 @@ function products_loop(){
 add_action("divalesi_shop_loop","products_loop");
 
 function shop_filters(){
-    $filters = new Divalesi\Filter\FilterLoop;
+    $filters = new Divalesi\Filter\Filter;
     print_r($filters->get());
 }
 add_action("divalesi_shop_filters","shop_filters");

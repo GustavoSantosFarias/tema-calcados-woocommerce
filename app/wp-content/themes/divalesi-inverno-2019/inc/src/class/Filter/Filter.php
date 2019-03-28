@@ -2,7 +2,7 @@
 
 namespace Divalesi\Filter;
 
-class FilterLoop {
+class Filter {
 
     private $filters = array();
 

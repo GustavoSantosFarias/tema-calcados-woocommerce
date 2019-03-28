@@ -5,7 +5,7 @@ namespace Divalesi\Product;
 use \WP_Query;
 use \WC_Product_Variable;
 use Divalesi\Loop;
-use Divalesi\Filter\FilterLoop;
+use Divalesi\Filter\Filter;
 
 class ProductsLoop extends Loop{
 
@@ -15,7 +15,7 @@ class ProductsLoop extends Loop{
     public function __construct(string $path_template = ""){
         parent::__construct($path_template);
 
-        $this->filters = new FilterLoop;
+        $this->filters = new Filter;
     }
 
     /**
