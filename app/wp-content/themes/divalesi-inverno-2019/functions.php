@@ -50,6 +50,5 @@ add_action("divalesi_shop_loop","products_loop");
 
 function shop_filters(){
     $filters = Divalesi\Filter\Filter::instance();
-    print_r($filters->get());
 }
 add_action("divalesi_shop_filters","shop_filters");
