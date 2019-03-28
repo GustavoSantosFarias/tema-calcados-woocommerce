@@ -50,6 +50,10 @@ class ProductsLoop extends Loop{
                     $this->filters->set($variation);
                 }
 
+                if (!empty($_GET) && !$this->filters->by()) {
+                    continue;
+                }
+
                 $this->data["title"] = $product->get_title();
                 $this->data["regular_price"] = $variation[0]["display_regular_price"];
                 $this->data["sale_price"] = $variation[0]["display_price"];

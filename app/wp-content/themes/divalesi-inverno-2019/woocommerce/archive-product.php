@@ -18,7 +18,6 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
-
 ?>
 <header class="woocommerce-products-header">
 	
