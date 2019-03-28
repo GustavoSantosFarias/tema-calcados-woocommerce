@@ -41,8 +41,6 @@ get_header();
 
 <?php
 
-do_action("divalesi_shop_filters");
-
 /**
  * Hook: woocommerce_before_main_content.
  *
@@ -96,7 +94,8 @@ do_action( 'woocommerce_after_main_content' );
  *
  * @hooked woocommerce_get_sidebar - 10
  */
-do_action( 'woocommerce_sidebar' );
+
+do_action("divalesi_shop_filters");
 
 ?>
 </div>
@@ -104,4 +103,3 @@ do_action( 'woocommerce_sidebar' );
 
 get_footer();
 
-?>

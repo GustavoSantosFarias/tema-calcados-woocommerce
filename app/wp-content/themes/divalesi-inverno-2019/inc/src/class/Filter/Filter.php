@@ -4,6 +4,7 @@ namespace Divalesi\Filter;
 
 class Filter {
 
+    private static $instance = null;
     private $filters = array();
 
     public function set(array $variations){
@@ -18,6 +19,14 @@ class Filter {
 
     public function get(){
         return $this->filters;
+    }
+
+    public static function instance(){
+        if(self::$instance == null){
+            self::$instance = new Filter;
+        }
+
+        return self::$instance;
     }
 
 }

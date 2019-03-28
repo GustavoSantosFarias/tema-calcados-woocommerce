@@ -15,7 +15,7 @@ class ProductsLoop extends Loop{
     public function __construct(string $path_template = ""){
         parent::__construct($path_template);
 
-        $this->filters = new Filter;
+        $this->filters = Filter::instance();
     }
 
     /**
@@ -89,7 +89,7 @@ class ProductsLoop extends Loop{
                 $this->data["link"] = $product->get_permalink();
 
                 extract($this->data);
-
+                
                 include $this->template;
             }
         }
