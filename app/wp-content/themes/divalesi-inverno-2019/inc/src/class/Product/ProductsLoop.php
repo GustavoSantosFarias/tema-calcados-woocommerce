@@ -11,62 +11,31 @@ class ProductsLoop extends Loop{
 
     private $data = array();
     private $filters;
+    private $products_per_page;
+    private $terms;
 
-    public function __construct(string $path_template = ""){
+    /**
+     * @param path_template path to template loop
+     * @param products_per_page number of products per page. Is recommended always pass this parameter to make the products loop more fast.
+     * @param terms feature of the products that you want filter in products loop
+     */
+
+    public function __construct(string $path_template = "",int $products_per_page = -1,string $terms = ""){
         parent::__construct($path_template);
 
+        $this->products_per_page = $products_per_page;
+        $this->terms = $terms;
         $this->filters = Filter::instance();
     }
 
     /**
      * Get products with regular price, sale price, main image and first gallery image.
-     * If the @param filters isn't empty, the products that will be filtered by it value. Otherwise,
-     * all products will showed in shop page.  
-     * If the @param products_per_page isn't -1, it will define the products quantity get from database in each pagination page.
      * 
-     * @param products_per_page products quantity get from database in each pagination page.
-     * @param filters define the products that will be filtered by it value.
-     * 
-     * @return products template.
+     * @return products template loop.
      */
-    public function loop(int $products_per_page = -1,string $filter = ""){
-
-        if (isset($_GET["categoria"]) && is_shop()) {
-            $tax_query = array(
-                array(
-                    'taxonomy'      => 'product_cat',
-                    'field'         => 'slug',
-                    'terms'         => $_GET["categoria"],
-                    'operator'      => 'IN' 
-                )
-            );
-        }
-
-        if($filter == "featured"){
-            $tax_query = array(
-                array(
-                    'taxonomy' => 'product_visibility',
-                    'field'    => 'name',
-                    'terms'    => 'featured',
-                )
-            );
-        }
-
-        $args = array(
-            'post_type'      => 'product',
-            'post_status' => 'publish',
-            'posts_per_page' => $products_per_page,
-            'paged' => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
-            'tax_query' => isset($tax_query) ? $tax_query : array(),
-            'meta_query' => array(
-                array(
-                    'key'     => '_product_attributes',
-                    'compare' => 'LIKE',
-                ),
-            ),
-            'post__in' => ''
-        );
-
+    public function loop(){
+        $args = $this->args();
+        
         $query = new WP_Query($args);
 
         if ($query->have_posts()) {
@@ -93,6 +62,58 @@ class ProductsLoop extends Loop{
                 include $this->template;
             }
         }
+    }
+
+    /**
+     * Setup args array to products loop.
+     * This method generate the args array based on class attributes for filter the products loop.
+     * 
+     * @return args array.
+     */
+    private function args(){
+
+        if (is_product_category()) {
+            global $wp_query;
+            $category_slug = $wp_query->query_vars['product_cat'];
+
+            $tax_query = array(
+                array(
+                    'taxonomy'      => 'product_cat',
+                    'field'         => 'slug',
+                    'terms'         => $category_slug,
+                    'operator'      => 'IN' 
+                )
+            );
+        }
+
+        if($this->term == "featured"){
+            $tax_query = array(
+                array(
+                    'taxonomy' => 'product_visibility',
+                    'field'    => 'name',
+                    'terms'    => 'featured',
+                )
+            );
+        }
+
+        $args = array(
+            'post_type'      => 'product',
+            'post_status' => 'publish',
+            'posts_per_page' => $this->products_per_page,
+            'paged' => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
+            'tax_query' => isset($tax_query) ? $tax_query : array(),
+            'orderby' => 'title',
+            'order'   => 'ASC',
+            'meta_query' => array(
+                array(
+                    'key'     => '_product_attributes',
+                    'compare' => 'LIKE',
+                ),
+            ),
+            'post__in' => ''
+        );
+
+        return $args;
     }
 
 }

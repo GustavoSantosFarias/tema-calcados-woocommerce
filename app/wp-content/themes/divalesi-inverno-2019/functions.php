@@ -42,7 +42,7 @@ add_action("content_home","home");
 
 function products_loop(){
     $template = THEME_TEMPLATES_DIR."products_shop_view.php";
-    $loop_products = new Divalesi\Product\ProductsLoop($template);
+    $loop_products = new Divalesi\Product\ProductsLoop($template,12);
 
     $loop_products->loop(12);
 }
