@@ -1,3 +1,19 @@
-button{
-    
+form{
+    button{
+        padding: 10px 20px;
+        color: map-get($colors, stadard-button-text);
+    }
+
+    button.black{
+        background-color: map-get($colors, main);
+    }
+
+    button.gray{
+        background-color: map-get($colors, secondary);;
+    }
+
+}
+
+a.add-to-cart{
+    background-color: map-get($colors, main);
 }
