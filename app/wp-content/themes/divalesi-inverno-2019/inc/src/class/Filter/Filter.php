@@ -4,27 +4,35 @@ namespace Divalesi\Filter;
 
 class Filter {
 
-    private static $instance = null;
-    private $filters = array();
     private $variations;
+    private static $instance = null;
+
+    private $attributes = array(
+        "cores" => array(),
+        "tamanhos" => array()
+    );
 
     public function set(array $variations){
         $this->variations = $variations;
-
+        
         foreach ($this->variations as $variation) {
-            if($variation["is_in_stock"] == true && !in_array($variation["attributes"]["attribute_pa_tamanho"],$this->filters)){
-                array_push($this->filters,$variation["attributes"]["attribute_pa_tamanho"]);
+            if(!$variation["is_in_stock"]){
+                continue;
+            }
+
+            if(!in_array($variation["attributes"]["attribute_pa_tamanho"],$this->attributes["tamanhos"])){
+                array_push($this->attributes['tamanhos'],$variation["attributes"]["attribute_pa_tamanho"]);
             }
         }
 
-        sort($this->filters);
+        sort($this->attributes["tamanhos"]);
     }
 
     public function get(){
-        return $this->filters;
+        return $this->attributes["tamanhos"];
     }
 
-    public static function instance(){
+    public static function instance($template = ""){
         if(self::$instance == null){
             self::$instance = new Filter;
         }

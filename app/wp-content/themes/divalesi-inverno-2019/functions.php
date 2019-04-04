@@ -49,6 +49,11 @@ function products_loop(){
 add_action("divalesi_shop_loop","products_loop");
 
 function shop_filters(){
+    $template = THEME_TEMPLATES_DIR."filters_shop_view.php";
     $filters = Divalesi\Filter\Filter::instance();
+
+    $_filters = $filters->get();
+
+    require $template;
 }
 add_action("divalesi_shop_filters","shop_filters");

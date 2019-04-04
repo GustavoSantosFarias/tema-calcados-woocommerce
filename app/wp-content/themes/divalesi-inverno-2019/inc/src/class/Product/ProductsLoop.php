@@ -44,7 +44,7 @@ class ProductsLoop extends Loop{
                 global $product;
 
                 $variation = (new WC_Product_Variable(get_the_ID()))->get_available_variations(get_the_ID());
-                $gallery_image_id = $product->get_gallery_attachment_ids();
+                $gallery_image_id = $product->get_gallery_image_ids();
 
                 if(count($this->filters->get()) < 7){
                     $this->filters->set($variation);
@@ -90,7 +90,7 @@ class ProductsLoop extends Loop{
             );
         }
 
-        if($this->term == "featured"){
+        if($this->terms == "featured"){
             $tax_query = array(
                 array(
                     'taxonomy' => 'product_visibility',
