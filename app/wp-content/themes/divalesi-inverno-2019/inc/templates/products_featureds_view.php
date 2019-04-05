@@ -1,3 +1,3 @@
 <?php
 
-echo $regular_price;
+echo $title."<br>";

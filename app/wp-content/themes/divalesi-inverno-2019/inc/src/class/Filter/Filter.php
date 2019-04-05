@@ -32,7 +32,7 @@ class Filter {
         return $this->attributes["tamanhos"];
     }
 
-    public static function instance($template = ""){
+    public static function instance(){
         if(self::$instance == null){
             self::$instance = new Filter;
         }

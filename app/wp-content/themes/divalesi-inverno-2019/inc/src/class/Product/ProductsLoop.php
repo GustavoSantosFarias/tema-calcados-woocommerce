@@ -35,7 +35,7 @@ class ProductsLoop extends Loop{
      */
     public function loop(){
         $args = $this->args();
-        
+
         $query = new WP_Query($args);
 
         if ($query->have_posts()) {
