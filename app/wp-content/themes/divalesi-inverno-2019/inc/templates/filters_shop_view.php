@@ -1,10 +1,4 @@
 <aside>
-    <pre>
-        <?php 
-            $attribute_taxonomies = wc_get_attribute_taxonomies();
-            print_r($attribute_taxonomies);
-        ?>
-    </pre>
     <div>
         <h4>Tamanhos</h4>
         <ul>

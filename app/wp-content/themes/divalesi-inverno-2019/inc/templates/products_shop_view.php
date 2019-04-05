@@ -6,4 +6,4 @@
             <h5><?= wc_price($regular_price) ?></h5>
         </div>
     </a>
-</li>    
+</li>   

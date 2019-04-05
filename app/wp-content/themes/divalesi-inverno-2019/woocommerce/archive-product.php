@@ -36,7 +36,8 @@ get_header();
 </header>
 
 <div class="container">
-
+	<div class="clearfix">
+		<div class="float-right">
 <?php
 
 /**
@@ -87,9 +88,18 @@ if ( woocommerce_product_loop() ) {
  */
 do_action( 'woocommerce_after_main_content' );
 
-do_action("divalesi_shop_filters");
-
 ?>
+
+		</div>	
+
+		<div class="float-left">
+			<?php
+
+			do_action("divalesi_shop_filters");
+
+			?>
+		</div>	
+	</div>	
 </div>
 <?php
 
