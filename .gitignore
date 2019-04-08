@@ -7,6 +7,7 @@ nginx/
 app/wp-content/uploads/wc-logs
 app/vendor
 app/node_modules
+app/wp-content/cache
 !.env_example
 !nginx/default*
 .yml*

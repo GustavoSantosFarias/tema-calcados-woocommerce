@@ -14,9 +14,11 @@ class CategoriesLoop extends Loop{
         parent::__construct($path_template);
 
         $args = array(
+            'number' => 8,
             'post_type' => 'product',
             'post_status' => 'publish'
         );
+
         $this->terms = get_terms( 'product_cat', $args );
     }
 
