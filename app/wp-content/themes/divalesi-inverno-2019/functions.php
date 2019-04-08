@@ -25,13 +25,8 @@ function products_featureds(){
 add_action("content_products_featureds","products_featureds");
 
 function categories_home(){
-
-    if(!isset($GLOBALS["categories"])){
-        $template = THEME_TEMPLATES_DIR."categories_home_view.php";
-        $GLOBALS["categories"] = CategoriesLoop::instance($template);
-    }
-
-    global $categories;
+    $template = THEME_TEMPLATES_DIR."categories_home_view.php";
+    $categories = CategoriesLoop::instance($template);
 
     $categories->loop();
 }

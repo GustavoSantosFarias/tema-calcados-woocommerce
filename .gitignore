@@ -3,10 +3,7 @@
 certs/
 certs-data/
 logs/
-nginx/
 app/wp-content/uploads/wc-logs
 app/vendor
 app/node_modules
-!.env_example
-!nginx/default*
 .yml*

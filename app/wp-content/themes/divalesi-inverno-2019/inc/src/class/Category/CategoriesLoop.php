@@ -26,7 +26,7 @@ class CategoriesLoop extends Loop{
 
             $this->data["category_image"] = wp_get_attachment_image_url($category_id_image,"full"); 
             $this->data["category_name"] = $category->name;
-            $this->data["category_link"] = get_term_link( $category->term_id, 'product_cat' );;
+            $this->data["category_link"] = site_url()."/calcaldos/".$category->slug;
             
             extract($this->data);
 
