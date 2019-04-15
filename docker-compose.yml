@@ -1,33 +1,35 @@
-version: '3'
+version: '3.6'
 services:
+
   wordpress:
-    image: wordpress:php7.3-fpm
+    image: wordpress:${WORDPRESS_VERSION:-php7.3-fpm}
     container_name: app
     volumes:
       - ./app:/var/www/html
     environment:
-      - WORDPRESS_DB_NAME=divalesi_inverno2019
-      - WORDPRESS_TABLE_PREFIX=div
-      - WORDPRESS_DB_HOST=mysql
-      - WORDPRESS_DB_USER=root
-      - WORDPRESS_DB_PASSWORD=test
+      - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME:-divalesi_inverno2019}
+      - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX:-div}
+      - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST:-mysql}
+      - WORDPRESS_DB_USER=${WORDPRESS_DB_USER:-root}
+      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD:-test}
     depends_on:
       - mysql
     restart: always
 
   mysql:
-    image: mysql:5.7
+    image: mariadb:${MARIADB_VERSION:-latest}
     container_name: mysql
     volumes:
       - ./db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=test
-      - MYSQL_PASSWORD=test
-      - MYSQL_DATABASE=divalesi_inverno2019
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-test}
+      - MYSQL_USER=${MYSQL_USER:-root}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-test}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-divalesi_inverno2019}
     restart: always
 
   nginx:
-    image: nginx
+    image: nginx:${NGINX_VERSION:-latest}
     container_name: nginx
     ports:
       - 8000:80

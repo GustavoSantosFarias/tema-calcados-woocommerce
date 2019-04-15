@@ -95,7 +95,7 @@ NGINX_VERSION=latest
 # volumes on host
 NGINX_CONF_DIR=./nginx
 NGINX_LOG_DIR=./logs/nginx
-WORDPRESS_DATA_DIR=./app
+WORDPRESS_DATA_DIR=./wordpress
 SSL_CERTS_DIR=./certs
 SSL_CERTS_DATA_DIR=./certs-data
 ```
