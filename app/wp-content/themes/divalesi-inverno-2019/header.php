@@ -10,3 +10,12 @@
     <?php wp_head(); ?>
 </head>
 <body class="<?php body_class()?>">
+    <header>
+        <div id="mobile-header">
+            <div class="logo">
+                <img src="" alt="">
+            </div>
+
+            <?php divalesi_header_menu(); ?>
+        </div>
+    </header>
