@@ -19,7 +19,7 @@ services:
   mysql:
     image: mariadb:${MARIADB_VERSION:-latest}
     container_name: mysql
-    ports: 
+    ports:
       - 3306:3306
     volumes:
       - ./db:/var/lib/mysql

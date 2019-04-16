@@ -11,6 +11,11 @@ function divalesi_add_woocommerce_support() {
 add_action('after_setup_theme', 'divalesi_add_woocommerce_support');
 add_filter('woocommerce_enqueue_styles', '__return_false');
 
+function register_menu() {
+    register_nav_menu('header-menu',__('Header Menu'));
+}
+add_action('init','register_menu');
+
 function load_setup_theme(){
     require __DIR__."/inc/setup.php";
 }
