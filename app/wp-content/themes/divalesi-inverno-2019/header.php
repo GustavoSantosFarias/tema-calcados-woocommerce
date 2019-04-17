@@ -11,11 +11,27 @@
 </head>
 <body class="<?php body_class()?>">
     <header>
-        <div id="mobile-header">
+        
+        <div id="mobile-nav" class="d-sm-none d-md-none d-lg-none">
+            <?php divalesi_header_menu(); ?>
+        </div>
+
+        <div id="dark-mask"></div>
+
+        <div id="top" class="d-xs-none">
+            <div>
+            </div>
+            <div>
+            </div>
+        </div>
+
+        <div id="main-header">
             <div class="logo">
-                <img src="" alt="">
+                <img class="img-responsive" src="" alt="Divalesi Inverno 2019">
             </div>
 
-            <?php divalesi_header_menu(); ?>
+            <div class="d-xs-none">
+                <?php divalesi_header_menu(); ?>
+            </div>
         </div>
     </header>
