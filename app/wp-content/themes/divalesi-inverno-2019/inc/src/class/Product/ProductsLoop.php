@@ -4,10 +4,10 @@ namespace Divalesi\Product;
 
 use \WP_Query;
 use \WC_Product_Variable;
-use Divalesi\Loop;
+use Divalesi\AbstractLoop;
 use Divalesi\Filter\Filter;
 
-class ProductsLoop extends Loop{
+class ProductsLoop extends AbstractLoop{
 
     private $data = array();
     private $filters;

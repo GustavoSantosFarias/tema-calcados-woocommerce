@@ -2,9 +2,9 @@
 
 namespace Divalesi\Category;
 
-use Divalesi\Loop;
+use Divalesi\AbstractLoop;
 
-class CategoriesLoop extends Loop{
+class CategoriesLoop extends AbstractLoop{
 
     private $terms;
     private $data = array();
