@@ -18,13 +18,9 @@ function divalesi_header_menu(){
     wp_nav_menu($args);
 }
 
-if (!function_exists('assetsVersion')) {
+function assetsVersion($asset_path) {
+    $path = pathinfo($asset_path);
+    $ver = filemtime($asset_path);
 
-    function assetsVersion($asset_path) {
-        $path = pathinfo($asset_path);
-        $ver = filemtime($asset_path);
-        
-        return $path['dirname'].'/'.$path['basename']."?v=".$ver;
-    }
-
+    return THEME_ASSETS_URI . $path["extension"] . "/" . $path["basename"] . "?v=" . $ver;
 }
