@@ -1,11 +1,14 @@
-@import "mixins/reset";
-@import "mixins/colors";
-@import "mixins/buttons";
-@import "mixins/hover";
-@import "mixins/prices";
-@import "mixins/texts";
-@import "mixins/titles";
+@import "includes/reset";
+@import "includes/mixins";
+@import "includes/screens";
+@import "includes/colors";
+@import "includes/buttons";
+@import "includes/hover";
+@import "includes/prices";
+@import "includes/texts";
+@import "includes/titles";
 
+@import "header";
 @import "home";
 @import "shop";
 @import "product";

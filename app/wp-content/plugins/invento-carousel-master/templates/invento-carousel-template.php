@@ -20,7 +20,7 @@ foreach ($loop->posts as $key => $post):
 ?>
             <li id="banner-<?php echo $key?>">
                 <a href="<?php echo site_url('calcados'); //echo get_permalink(); ?>" class="">
-                    <img src="<?php echo $image; ?>" class="horizontal-center img-responsive" title="<?php //echo get_the_title(); ?>" alt="<?php echo get_the_title(); ?>" />
+                    <img src="<?php echo $image; ?>" class="horizontal-center img-fluid" title="<?php //echo get_the_title(); ?>" alt="<?php echo get_the_title(); ?>" />
                 </a>
             </li>	
 

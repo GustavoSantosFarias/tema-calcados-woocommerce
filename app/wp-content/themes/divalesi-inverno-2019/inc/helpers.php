@@ -30,7 +30,7 @@ if (!function_exists("assetsVersion")) {
 if (!function_exists("myAccountLink")) {
     function myAccountLink() {
         if ( is_user_logged_in() ) : ?>
-            <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('My Account','woothemes'); ?>"><?php _e('My Account','woothemes'); ?></a>
+            <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="Minha Conta">Olá <span><?= wp_get_current_user()->display_name ?></span></a>
         <?php else : ?>
             <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('Login / Register','woothemes'); ?>"><?php _e('Login / Register','woothemes'); ?></a>
         <?php endif;
