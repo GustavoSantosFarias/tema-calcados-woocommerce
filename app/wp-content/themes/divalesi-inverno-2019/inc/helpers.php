@@ -18,9 +18,21 @@ function divalesi_header_menu(){
     wp_nav_menu($args);
 }
 
-function assetsVersion($asset_path) {
-    $path = pathinfo($asset_path);
-    $ver = filemtime($asset_path);
+if (!function_exists("assetsVersion")) {
+    function assetsVersion($asset_path) {
+        $path = pathinfo($asset_path);
+        $ver = filemtime($asset_path);
+    
+        return THEME_ASSETS_URI . $path["extension"] . "/" . $path["basename"] . "?v=" . $ver;
+    }
+}
 
-    return THEME_ASSETS_URI . $path["extension"] . "/" . $path["basename"] . "?v=" . $ver;
+if (!function_exists("myAccountLink")) {
+    function myAccountLink() {
+        if ( is_user_logged_in() ) : ?>
+            <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('My Account','woothemes'); ?>"><?php _e('My Account','woothemes'); ?></a>
+        <?php else : ?>
+            <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('Login / Register','woothemes'); ?>"><?php _e('Login / Register','woothemes'); ?></a>
+        <?php endif;
+    }
 }

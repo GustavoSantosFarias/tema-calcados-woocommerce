@@ -32,5 +32,7 @@
             <div class="d-xs-none">
                 <?php divalesi_header_menu(); ?>
             </div>
+
+            <?php myAccountLink(); ?>
         </div>
     </header>
