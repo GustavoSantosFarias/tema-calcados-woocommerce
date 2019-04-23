@@ -23,9 +23,68 @@
     }
 }
 
+#products-featureds{
+    h2{
+        text-align: center;
+        position: relative;
+
+        span.title-separator {
+            display: block;
+
+            span::before{
+                @include rotateLine(45deg);
+            }
+
+            span::after{
+                @include rotateLine(-45deg);
+            }
+
+            &::before,&::after,span::before,span::after{
+                content: "";
+                position: absolute;
+                bottom: -12px;
+                left: 50%;
+                margin-left: -12px;
+                width: 12px;
+                height: 1px;
+                display: inline-block;
+                background-color: #DCDCDC;
+            }
+
+            &::before{
+                margin-left: -44px;
+                width: 24px;
+            }
+
+            &::after{
+                margin-left: 10px;
+                width: 24px;
+            }
+        }
+    }
+
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+
+        li{
+            .product-info{
+                h4,h6{
+                    font-weight: 300;
+                }
+
+                span{
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
 @media #{$smartphones}{
     #outstanding-conditions{
-        margin: 20px 0;
+        margin: 20px 0 35px;
 
         h1{
             margin-top: 15px;
@@ -40,6 +99,29 @@
                 height: 2px;
                 display: inline-block;
                 background-color: map-get($colors, background-secondary);
+            }
+        }
+    }
+
+    #products-featureds{
+        h2{
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        ul{
+            margin-top: 30px;
+
+            li{
+                width: 50%;
+                padding: 0 10px;
+                margin-bottom: 20px;
+
+                .product-info{
+                    .full-price span{
+                        font-size: 14px;
+                    }
+                }
             }
         }
     }

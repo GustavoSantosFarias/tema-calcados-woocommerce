@@ -18,6 +18,10 @@ function divalesi_header_menu(){
     wp_nav_menu($args);
 }
 
+function inInstallmentPrice($price){
+    return wc_price($price / 6);
+}
+
 if (!function_exists("assetsVersion")) {
     function assetsVersion($asset_path) {
         $path = pathinfo($asset_path);

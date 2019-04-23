@@ -3,3 +3,12 @@
 	-ms-border-radius: $value;
 	border-radius: $value; 
 }
+
+@mixin rotateLine($value: 0) {
+	-webkit-transform: rotate($value);
+	-moz-transform: rotate($value);
+	-o-transform: rotate($value);
+	-ms-transform: rotate($value);
+	-sand-transform: rotate($value);
+	transform: rotate($value);
+}
