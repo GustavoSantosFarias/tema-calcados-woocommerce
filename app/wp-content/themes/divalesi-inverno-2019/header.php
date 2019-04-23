@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<?= assetsVersion(THEME_ASSETS_DIR."css/main.min.css") ?>">
     <script src="<?= THEME_ASSETS_URI . "js/plugins/jquery.min.js" ?>"></script>
 </head>
-<body <?php body_class()?>>
+<body <?php body_class("hind")?>>
     <header>
         <div id="mobile-nav" class="d-sm-none">
             <form action="" method="get">

@@ -47,6 +47,16 @@ function categories_home_after(){
 }
 add_action("content_categories_home_after","categories_home_after");
 
+function products_featureds_before(){
+    require THEME_TEMPLATES_DIR."products_featureds_before_view.php";
+}
+add_action("content_products_featureds_before","products_featureds_before");
+
+function products_featureds_after(){
+    require THEME_TEMPLATES_DIR."products_featureds_after_view.php";
+}
+add_action("content_products_featureds_after","products_featureds_after");
+
 function banners_home(){
     get_template_part("inc/templates/banners_home_view");
 }
@@ -54,7 +64,10 @@ add_action("content_banners_home","banners_home");
 
 function home(){
     do_action("content_banners_home");
+    
+    do_action("content_products_featureds_before");
     do_action("content_products_featureds");
+    do_action("content_products_featureds_after");
 
     do_action("content_categories_home_before");
     do_action("content_categories_home");
