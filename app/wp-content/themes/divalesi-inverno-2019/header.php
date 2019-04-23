@@ -12,8 +12,14 @@
 </head>
 <body <?php body_class()?>>
     <header>
-        <div id="mobile-nav" class="d-none">
+        <div id="mobile-nav" class="d-sm-none">
+            <form action="" method="get">
+                <input type="text" name="s" id="search" placeholder="Busca por produtos">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+
             <?php divalesi_header_menu(); ?>
+            <?php myAccountLink(); ?>
         </div>
 
         <div id="dark-mask"></div>
@@ -37,7 +43,7 @@
         <div id="main-header" class="clearfix">
             <div class="container">
                 <div class="logo float-left">
-                    <img class="img-responsive" src="<?= THEME_ASSETS_URI . 'images/logo-divalesi.png' ?>" alt="Divalesi Inverno 2019">
+                    <a href="<?= site_url() ?>" title="Divalesi Inverno 2019"><img class="img-responsive" src="<?= THEME_ASSETS_URI . 'images/logo-divalesi.png' ?>" alt="Divalesi Inverno 2019"></a>
                 </div>
 
                 <div class="d-none d-sm-block">
@@ -46,8 +52,10 @@
 
                 <div id="mobile-nav-icon" class="d-sm-none d-md-none d-lg-none float-right clearfix">
                     <div class="cart-icon-mobile float-left">
-                        <i class="fas fa-shopping-cart"></i>
-                        <div><?= WC()->cart->get_cart_contents_count() ?></div>
+                        <a href="<?= wc_get_cart_url() ?>">
+                            <i class="fas fa-shopping-cart"></i>
+                            <div><?= WC()->cart->get_cart_contents_count() ?></div>
+                        </a>
                     </div>
                     <div class="burguer-menu">
                         <span></span>

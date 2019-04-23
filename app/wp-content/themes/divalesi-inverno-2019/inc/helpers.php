@@ -30,9 +30,10 @@ if (!function_exists("assetsVersion")) {
 if (!function_exists("myAccountLink")) {
     function myAccountLink() {
         if ( is_user_logged_in() ) : ?>
-            <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="Minha Conta">Olá <span><?= wp_get_current_user()->display_name ?></span></a>
+            <a class="link-login-register" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="Minha Conta"><i class="far fa-user-circle"></i> Olá <span><?= wp_get_current_user()->display_name ?></span></a>
+            <a class="d-sm-none logout-link" href="<?= wp_logout_url(get_permalink(woocommerce_get_page_id('myaccount')))?>"><i class="far fa-times-circle"></i></a>
         <?php else : ?>
-            <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('Login / Register','woothemes'); ?>"><?php _e('Login / Register','woothemes'); ?></a>
+            <a class="link-login-register" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('Login / Register','woothemes'); ?>"><i class="far fa-user-circle"></i> <?php _e('Login / Register','woothemes'); ?></a>
         <?php endif;
     }
 }
