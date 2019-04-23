@@ -1,7 +1,15 @@
 header{
     #top{
         background-color: map-get($colors, background-secondary);
+        color: map-get($colors, stadard-button-text);
         div{
+            &:first-child{
+                float: left;
+            }
+            i{
+                font-size: 14px;
+            }
+
             ul{
                 li{
                     display: inline-block;
@@ -12,6 +20,24 @@ header{
 }
 
 @media #{$smartphones}{
+    header{
+        #top{
+            padding: 12px 15px;
+
+            div{
+                font-size: 2.7vw;
+                text-align: center;
+                i{
+                    margin-right: 3px; 
+                }
+
+                i:nth-child(3){
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+
     #main-header{
         padding: 20px 0;
 

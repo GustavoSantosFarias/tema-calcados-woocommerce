@@ -19,11 +19,11 @@
         <div id="dark-mask"></div>
 
         <div id="top" class="clearfix">
-            <div class="float-left">
-                <i class="fa fa-phone-square"> </i> 
+            <div>
+                <i class="fas fa-phone"></i>
                 TELEFONE: <span>(51) 3546-6777</span>
-                <i class="fa fa-whatsapp"> </i> 
-                WHATSAPP: <span>(51) 99161-3239 <span>(seg. a sex. 7h - 11:30 e 13h - 17h)</span></span>
+                <i class="fab fa-whatsapp"></i> 
+                WHATSAPP: <span>(51) 99161-3239 <span class="d-none d-sm-block">(seg. a sex. 7h - 11:30 e 13h - 17h)</span></span>
             </div>
             <div class="float-right d-none d-sm-block">
                 <ul>
