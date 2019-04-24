@@ -83,6 +83,11 @@ h2.section-title-home{
 }
 
 @media #{$smartphones}{
+    h2.section-title-home{
+        font-size: 20px;
+        font-weight: 400;
+    }
+
     #outstanding-conditions{
         margin: 20px 0 35px;
 
@@ -103,15 +108,14 @@ h2.section-title-home{
         }
     }
 
-    #products-featureds{
-        h2{
-            font-size: 20px;
-            font-weight: 400;
-        }
-
-        ul{
+    #products-featureds,#products-categories{
+        & ul{
             margin-top: 30px;
+        }
+    }
 
+    #products-featureds{
+        ul{
             li{
                 width: 50%;
                 padding: 0 10px;
@@ -120,6 +124,39 @@ h2.section-title-home{
                 .product-info{
                     .full-price span{
                         font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    #products-categories{
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+
+            li{
+                width: 50%;
+                padding: 5px;
+
+                a{
+                    position: relative;
+                    display: block;
+
+                    h3{
+                        position: absolute;
+                        bottom: 0;
+                        background-color: map-get($colors, stadard-button-text);
+                        height: 26px;
+                        padding: 0;
+                        text-align: center;
+                        line-height: 30px;
+                        width: 90px;
+                        font-size: 16px;
+                        left: 37.5px;
+                        font-style: italic;
+                        color: map-get($colors, main);
+                        letter-spacing: 1.5px;
                     }
                 }
             }
