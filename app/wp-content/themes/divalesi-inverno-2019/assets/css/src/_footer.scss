@@ -1,5 +1,90 @@
 footer{
-    background-color: map-get($colors, standard-title);
+    background-color: map-get($colors, main);
+    padding: 50px 0 20px 0;
 
-    
+    ul{
+        li{
+            a{
+                font-size: 14px;
+                font-weight: 300;
+            }
+        }
+    }
+
+    .languages-translated{
+        margin: 20px 0;
+    }
+
+    .social-link-icons{
+        ul{
+            li{
+                margin: 0 5px;
+            }
+        }
+    }
+
+    .footer-menus{
+
+        margin-top: 40px;
+
+        div{
+            margin-bottom: 30px;
+
+            h4{
+                font-size: 16px;
+                text-transform: uppercase;
+                font-weight: 700;
+                letter-spacing: 1.5px;
+                color: map-get($colors, secondary);
+                margin-bottom: 25px;
+                position: relative;
+                padding-bottom: 4px;
+                line-height: 1.4;
+
+                &::before{
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    display: inline-block;
+                    width: 30px;
+                    height: 2px;
+                    background-color: map-get($colors, secondary);
+                }
+           }
+
+           p{
+               line-height: 1.5;
+           }
+
+           nav.menu-container{
+                ul{
+                    li{
+                        margin-bottom: 15px; 
+
+                        a{
+                            color: map-get($colors, standard-text);
+                        }
+                    }
+                }
+           }
+        }
+    }
+
+    .footer-menus p, address p{
+        font-size: 14px;
+        font-weight: 300;
+        
+    }
+
+    address{
+        p{
+            line-height: 20px;
+
+            i{
+                width: 26px;
+            }
+        }
+
+        margin-bottom: 20px;
+    }
 }
