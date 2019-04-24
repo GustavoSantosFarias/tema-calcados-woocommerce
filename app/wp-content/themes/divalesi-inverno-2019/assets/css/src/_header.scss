@@ -3,9 +3,6 @@ header{
         background-color: map-get($colors, background-secondary);
         color: map-get($colors, stadard-button-text);
         div{
-            &:first-child{
-                float: left;
-            }
             i{
                 font-size: 14px;
             }
@@ -224,6 +221,20 @@ header{
                 
                 &:before{
                     top: -6px;
+                }
+            }
+        }
+    }
+}
+
+@media #{$tablets}{
+    header{
+        #top{
+            background-color: map-get($colors, background-secondary);
+            color: map-get($colors, stadard-button-text);
+            div{
+                &:first-child{
+                    float: left;
                 }
             }
         }
