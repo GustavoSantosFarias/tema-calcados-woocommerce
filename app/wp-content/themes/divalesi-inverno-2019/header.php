@@ -18,7 +18,7 @@
                 <button type="submit"><i class="fas fa-search"></i></button>
             </form>
 
-            <?php divalesi_header_menu(); ?>
+            <?php divalesi_menu("header-menu"); ?>
             <?php myAccountLink(); ?>
         </div>
 
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="d-none d-sm-block">
-                    <?php divalesi_header_menu(); ?>
+                    <?php divalesi_menu("header-menu"); ?>
                 </div>
 
                 <div id="mobile-nav-icon" class="d-sm-none d-md-none d-lg-none float-right clearfix">

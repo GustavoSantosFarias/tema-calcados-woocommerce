@@ -13,6 +13,10 @@ add_filter('woocommerce_enqueue_styles', '__return_false');
 
 function register_menu() {
     register_nav_menu('header-menu',__('Header Menu'));
+    register_nav_menu('footer-atendimento',__('Footer Atendimento'));
+    register_nav_menu('links-uteis-footer',__('Links Úteis Footer'));
+    register_nav_menu('nossas-redes',__('Nossas Redes'));
+
 }
 add_action('init','register_menu');
 
