@@ -8,4 +8,4 @@
         </span>
     </h2>
 
-    <ul>
+    <ul class="products">

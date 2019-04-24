@@ -8,9 +8,10 @@
         <div class="product-info">
             <h4 class="primary-title"><?= $title ?></h4>
             <h6 class="primary-title"> 
-                <span class="in-installment-times">6x</span> de
-                <span class="in-installment-price secondary-title"><?= inInstallmentPrice($regular_price) ?></span> ou
-                <span class="full-price secondary-title"><?= wc_price($regular_price) ?></span> á vista
+                <?php salePriceProductListTemplate($price,$regular_price) ?>
+                
+                <span class="price"><?= wc_price($price) ?></span>
+                <span class="in-installment">6x de <?= inInstallmentPrice($price) ?> sem juros</span>
             </h6>
         </div>
     </a>

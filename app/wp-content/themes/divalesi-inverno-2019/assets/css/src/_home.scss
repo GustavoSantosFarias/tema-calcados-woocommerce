@@ -62,26 +62,6 @@ h2.section-title-home{
     }
 }
 
-#products-featureds{
-    ul{
-        display: flex;
-        flex-wrap: wrap;
-
-        li{
-            .product-info{
-                h4,h6{
-                    font-weight: 300;
-                }
-
-                span{
-                    font-weight: bold;
-                    font-size: 18px;
-                }
-            }
-        }
-    }
-}
-
 @media #{$smartphones}{
     h2.section-title-home{
         font-size: 20px;
@@ -110,23 +90,7 @@ h2.section-title-home{
 
     #products-featureds,#products-categories{
         & ul{
-            margin-top: 30px;
-        }
-    }
-
-    #products-featureds{
-        ul{
-            li{
-                width: 50%;
-                padding: 0 10px;
-                margin-bottom: 20px;
-
-                .product-info{
-                    .full-price span{
-                        font-size: 14px;
-                    }
-                }
-            }
+            margin-top: 40px;
         }
     }
 
