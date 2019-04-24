@@ -1,3 +1,42 @@
+h2.section-title-home{
+    text-align: center;
+    position: relative;
+
+    span.title-separator {
+        display: block;
+
+        span::before{
+            @include rotateLine(45deg);
+        }
+
+        span::after{
+            @include rotateLine(-45deg);
+        }
+
+        &::before,&::after,span::before,span::after{
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            margin-left: -12px;
+            width: 12px;
+            height: 1px;
+            display: inline-block;
+            background-color: #DCDCDC;
+        }
+
+        &::before{
+            margin-left: -44px;
+            width: 24px;
+        }
+
+        &::after{
+            margin-left: 10px;
+            width: 24px;
+        }
+    }
+}
+
 #outstanding-conditions{
     .main-condition{
         background-color: map-get($colors, main);
@@ -24,45 +63,6 @@
 }
 
 #products-featureds{
-    h2{
-        text-align: center;
-        position: relative;
-
-        span.title-separator {
-            display: block;
-
-            span::before{
-                @include rotateLine(45deg);
-            }
-
-            span::after{
-                @include rotateLine(-45deg);
-            }
-
-            &::before,&::after,span::before,span::after{
-                content: "";
-                position: absolute;
-                bottom: -12px;
-                left: 50%;
-                margin-left: -12px;
-                width: 12px;
-                height: 1px;
-                display: inline-block;
-                background-color: #DCDCDC;
-            }
-
-            &::before{
-                margin-left: -44px;
-                width: 24px;
-            }
-
-            &::after{
-                margin-left: 10px;
-                width: 24px;
-            }
-        }
-    }
-
     ul{
         display: flex;
         flex-wrap: wrap;
