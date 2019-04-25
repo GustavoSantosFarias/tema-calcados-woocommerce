@@ -6,10 +6,10 @@ function filterUrl(string $filter){
     return $path;
 }
 
-function divalesi_menu(string $menu){
+function divalesi_menu($slug_menu){
     $args = array(
-        'menu'            => $menu,
-        'menu_class'      => $menu,
+        'menu'            => $slug_menu,
+        'menu_class'      => $slug_menu,
         'container'       => 'nav',
         'container_class' => 'menu-container'
     );
