@@ -3,8 +3,9 @@
     if(is_product()){
         $terms = get_the_terms( $post->ID , 'product_cat');
         $category = $terms[0]->slug;
-    }elseif($_GET['c'] !== NULL){
-        $category = $_GET['c'];
+    }elseif(is_product_category()){
+        $category_obj = get_queried_object(); 
+        $category = $category_obj->slug;
     }else{
         $category = "todos";
     }
@@ -22,9 +23,8 @@
 
     if(in_array($banner_page->post_mime_type,$mime_types_allow)) :
 ?>
-
-<div class="titulo-categoria half-grey-top">
-    <div style="background-image:url('<?php echo $banner_page->guid; ?>')"></div>
-</div>
+        <div class="titulo-categoria half-grey-top">
+            <img class="img-fluid" src="<?= $banner_page->guid; ?>">
+        </div>
 
 <?php endif;

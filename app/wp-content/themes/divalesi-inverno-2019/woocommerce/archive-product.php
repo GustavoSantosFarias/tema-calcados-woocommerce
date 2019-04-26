@@ -21,7 +21,9 @@ get_header();
 ?>
 <header class="woocommerce-products-header">
 	
-	<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+	<?php do_action("invento_banner_categoria") ?>
+
+	<h1 class="woocommerce-products-header__title page-title d-none"><?php woocommerce_page_title(); ?></h1>
 
 	<?php
 	/**
