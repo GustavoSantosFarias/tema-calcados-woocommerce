@@ -88,3 +88,17 @@ footer{
         margin-bottom: 20px;
     }
 }
+
+@media #{$tablets}{
+    footer{
+        .footer-menus{
+            address {
+                margin: 20px 0;
+    
+                p{
+                    font-size: 12px;
+                }
+            }
+        }
+    } 
+}
