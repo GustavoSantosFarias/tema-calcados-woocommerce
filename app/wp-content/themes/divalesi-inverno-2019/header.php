@@ -55,10 +55,12 @@
 
                     <div class="d-none d-sm-block col-2">
                         <button><i class="fas fa-search"></i></button>
-                        <span class="cart-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="cart-total-amount"><?= WC()->cart->get_cart_contents_count() ?></span>
-                        </span>
+                        <a href="<?= wc_get_cart_url() ?>">
+                            <span class="cart-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-total-amount"><?= WC()->cart->get_cart_contents_count() ?></span>
+                            </span>
+                        </a>
                         <span class="cart-price"><?= WC()->cart->get_cart_total() ?></span>
                     </div>
 
