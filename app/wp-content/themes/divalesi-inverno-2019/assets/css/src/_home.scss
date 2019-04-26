@@ -59,6 +59,48 @@ h2.section-title-home{
         position: relative;
         text-align: center;
         font-weight: 300;
+
+        &::after{
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            margin-left: -15px;
+            width: 30px;
+            height: 2px;
+            display: inline-block;
+            background-color: map-get($colors, background-secondary);
+        }
+    }
+}
+
+#products-categories{
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+
+        li{
+            a{
+                position: relative;
+                display: block;
+
+                h3{
+                    position: absolute;
+                    bottom: 0;
+                    background-color: map-get($colors, stadard-button-text);
+                    height: 26px;
+                    padding: 0;
+                    text-align: center;
+                    line-height: 30px;
+                    width: 90px;
+                    font-size: 16px;
+                    font-style: italic;
+                    color: map-get($colors, main);
+                    letter-spacing: 1.5px;
+                    @include absolutCenter;
+                }
+            }
+        }
     }
 }
 
@@ -73,18 +115,6 @@ h2.section-title-home{
 
         h1{
             margin-top: 15px;
-
-            &::after{
-                content: "";
-                position: absolute;
-                bottom: -12px;
-                left: 50%;
-                margin-left: -15px;
-                width: 30px;
-                height: 2px;
-                display: inline-block;
-                background-color: map-get($colors, background-secondary);
-            }
         }
     }
 
@@ -96,33 +126,37 @@ h2.section-title-home{
 
     #products-categories{
         ul{
-            display: flex;
-            flex-wrap: wrap;
-
             li{
                 width: 50%;
                 padding: 5px;
+            }
+        }
+    }
+}
 
-                a{
-                    position: relative;
-                    display: block;
 
-                    h3{
-                        position: absolute;
-                        bottom: 0;
-                        background-color: map-get($colors, stadard-button-text);
-                        height: 26px;
-                        padding: 0;
-                        text-align: center;
-                        line-height: 30px;
-                        width: 90px;
-                        font-size: 16px;
-                        left: 37.5px;
-                        font-style: italic;
-                        color: map-get($colors, main);
-                        letter-spacing: 1.5px;
-                    }
-                }
+@media #{$tablets}{
+    #outstanding-conditions{
+        .main-condition{
+            padding: 12px;
+            margin-top: 30px;
+        }
+
+        h1{
+            margin: 15px 0 30px;
+        }
+    }
+
+    h2.section-title-home{
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+
+    #products-categories{
+        ul{
+            li{
+                width: 25%;
+                padding: 10px;
             }
         }
     }

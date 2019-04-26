@@ -7,6 +7,15 @@ ul.products{
         a{
             display: block;
             position: relative;
+
+            @include imageHover();
+        }
+
+        img.hover-image{
+            position: absolute;
+            top: 0;
+            opacity: 0;
+            @include transitions(0.5s);
         }
 
         .product-info{
@@ -85,6 +94,17 @@ ul.products{
             padding: 0 10px;
             margin-bottom: 25px;
 
+        }
+    }
+}
+
+@media #{$tablets}{
+    ul.products{
+        li{
+            width: 25%;
+            padding: 0 10px;
+            margin-bottom: 30px;
+            position: relative;
         }
     }
 }

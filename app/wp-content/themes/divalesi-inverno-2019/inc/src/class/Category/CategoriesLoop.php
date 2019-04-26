@@ -24,7 +24,7 @@ class CategoriesLoop extends AbstractLoop{
 
     public function loop(){
         foreach ($this->terms as $category) {
-            $category_id_image = get_woocommerce_term_meta($category->term_id, 'thumbnail_id', true );
+            $category_id_image = get_term_meta($category->term_id, 'thumbnail_id', true );
 
             $this->data["category_image"] = wp_get_attachment_image_url($category_id_image,"full"); 
             $this->data["category_name"] = $category->name;

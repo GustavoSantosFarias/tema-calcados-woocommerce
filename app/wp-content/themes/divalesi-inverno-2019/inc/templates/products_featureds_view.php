@@ -2,7 +2,7 @@
     <a href="<?= $link ?>" title="<?= $title ?>">
         <div class="product-image">
             <img class="img-fluid" src="<?= $image ?>" alt="<?= $title ?>">
-            <img class="img-fluid d-none" src="<?= $gallery_image ?>" alt="<?= $title ?>">
+            <img class="img-fluid hover-image" src="<?= $gallery_image ?>" alt="<?= $title ?>">
         </div>
 
         <div class="product-info">

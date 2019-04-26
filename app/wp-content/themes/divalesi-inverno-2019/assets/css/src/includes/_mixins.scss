@@ -12,3 +12,24 @@
 	-sand-transform: rotate($value);
 	transform: rotate($value);
 }
+
+@mixin transitions($value: 0) {
+	-webkit-transition: all $value;
+	-moz-transition: all $value;
+	-o-transition: all $value;
+	transition: all $value;
+}
+
+@mixin absolutCenter {
+	left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+@mixin imageHover{
+	& .hover-image:hover{
+		opacity: 1;
+	}
+}
