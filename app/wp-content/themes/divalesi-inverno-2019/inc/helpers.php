@@ -47,7 +47,7 @@ if (!function_exists("myAccountLink")) {
             <a class="link-login-register" href="<?= get_permalink(get_option('woocommerce_myaccount_page_id')) ?>" title="Minha Conta"><i class="far fa-user-circle"></i> Olá <span><?= wp_get_current_user()->display_name ?></span></a>
             <a class="d-sm-none logout-link" href="<?= wp_logout_url(get_permalink(woocommerce_get_page_id('myaccount'))) ?>"><i class="far fa-times-circle"></i></a>
         <?php else : ?>
-            <a class="link-login-register" href="<?= get_permalink(get_option('woocommerce_myaccount_page_id')) ?>" title="<?php _e('Login / Register','woothemes'); ?>"><i class="far fa-user-circle"></i> Login / Cadastro</a>
+            <a class="link-login-register clearfix" href="<?= get_permalink(get_option('woocommerce_myaccount_page_id')) ?>" title="<?php _e('Login / Register','woothemes'); ?>"><i class="far fa-user-circle"></i> Login / Cadastro</a>
         <?php endif;
     }
 }

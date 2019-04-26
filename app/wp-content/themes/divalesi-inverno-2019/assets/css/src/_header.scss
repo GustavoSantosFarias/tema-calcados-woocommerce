@@ -14,6 +14,21 @@ header{
             }
         }
     }
+
+    .cart-total-amount{
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: map-get($colors, alert);
+        color: map-get($colors, stadard-button-text);
+        top: -10px;
+        right: -10px;
+        @include borderRadius(50%);
+        text-align: center;
+        font-size: 10px;
+        line-height: 15px;
+        font-weight: bold;
+    }
 }
 
 @media #{$smartphones}{
@@ -166,6 +181,8 @@ header{
     }
 
     #mobile-nav-icon{
+        margin-top: 3px;
+
         .cart-icon-mobile{
             margin-top: 5px;
             margin-right: 25px;
@@ -175,24 +192,10 @@ header{
                 font-size: 20px;
                 color: map-get($colors, background-secondary);
             }
-
-            div{
-                position: absolute;
-                width: 15px;
-                height: 15px;
-                background-color: map-get($colors, alert);
-                color: map-get($colors, stadard-button-text);
-                top: -10px;
-                right: -10px;
-                @include borderRadius(50%);
-                text-align: center;
-                font-size: 10px;
-                line-height: 15px;
-                font-weight: bold;
-            }
         }
+
         .burguer-menu{
-            &,span{
+            span{
                 display: inline-block;
             }
 
@@ -232,9 +235,119 @@ header{
         #top{
             background-color: map-get($colors, background-secondary);
             color: map-get($colors, stadard-button-text);
-            div{
-                &:first-child{
+            height: 42px;
+            
+            *{
+                font-size: 12px;
+                line-height: 42px;
+                color: map-get($colors, stadard-button-text);
+            }
+
+            .container{
+                div:first-child{
                     float: left;
+
+                    span{
+                        margin-right: 10px;
+                    }
+                }
+            }
+
+            ul{
+                li{
+                    padding: 0 10px;
+                    text-transform: uppercase;
+
+                    &:nth-child(even){
+                        position: relative;
+
+                        &::after,&::before{
+                            position: absolute;
+                            content: "";
+                            height: 21px;
+                            width: 1px;
+                            background-color: rgba(0,0,0,.05);
+                            top: 10.5px;
+                        }
+
+                        &::after{
+                            right: 0;
+                        }
+
+                        &::before{
+                            left: 0;
+                        }
+                    }
+
+                    a{
+                        &.link-login-register{
+                            display: block;
+                            i{
+                                font-size: 22px;
+                                display: block;
+                                float: left;
+                            }
+                            span{
+                                font-style: italic;
+                                font-weight: bold;
+                                color: map-get($colors, main);
+                            }
+                        }
+                    }
+                }
+            }
+
+            i{
+                margin-right: 5px;
+            }
+
+        }
+
+        #main-header{
+            margin: 30px 0;
+
+            ul.header-menu{
+                li{
+                    display: inline-block;
+                    margin-right: 8px;
+
+                    a{
+                        text-transform: uppercase;
+                        color: rgba(0,0,0,.9);
+                        font-family: 'Karla', sans-serif;
+                        font-size: 14px;
+                        line-height: 33px;
+                        letter-spacing: .5px;
+                    }
+                }
+            }
+
+            div{
+                button{
+                    border: none;
+                    color: map-get($colors, standard-text);
+                    margin-right: 10px;
+                    margin-right: 25px;
+                }
+
+                .cart-icon{
+                    position: relative;
+
+                    .cart-total-amount{
+                        top: -6px;
+                        right: -6px;
+
+                    }
+                }
+
+                .cart-price{
+                    margin-left: 10px;
+                    font-weight: bold;
+                    font-size: 16px;
+                    
+                    .woocommerce-Price-currencySymbol{
+                        font-size: 12px;
+                    }
                 }
             }
         }

@@ -25,42 +25,55 @@
         <div id="dark-mask"></div>
 
         <div id="top" class="clearfix">
-            <div>
-                <i class="fas fa-phone"></i>
-                TELEFONE: <span>(51) 3546-6777</span>
-                <i class="fab fa-whatsapp"></i> 
-                WHATSAPP: <span>(51) 99161-3239 <span class="d-none d-sm-block">(seg. a sex. 7h - 11:30 e 13h - 17h)</span></span>
-            </div>
-            <div class="float-right d-none d-sm-block">
-                <ul>
-                    <li><?php myAccountLink(); ?></li>
-                    <li><a href="<?= wc_get_cart_url() ?>">Carrinho</a></li>
-                    <li><a href="<?= site_url() . '/atendimento' ?>">Atendimento</a></li>
-                </ul>  
+            <div class="container">
+                <div>
+                    <i class="fas fa-phone"></i>
+                    TELEFONE: <span>(51) 3546-6777</span>
+                    <i class="fab fa-whatsapp"></i> 
+                    WHATSAPP: <span>(51) 99161-3239 <span class="d-none d-sm-inline">(seg. a sex. 7h - 11:30 e 13h - 17h)</span></span>
+                </div>
+                <div class="float-right d-none d-sm-block">
+                    <ul>
+                        <li class="standard-titles-light"><?php myAccountLink(); ?></li>
+                        <li class="standard-titles-light"><a href="<?= wc_get_cart_url() ?>">Carrinho</a></li>
+                        <li class="standard-titles-light"><a href="<?= site_url() . '/atendimento' ?>">Atendimento</a></li>
+                    </ul>  
+                </div>
             </div>
         </div>
 
         <div id="main-header" class="clearfix">
             <div class="container">
-                <div class="logo float-left">
-                    <a href="<?= site_url() ?>" title="Divalesi Inverno 2019"><img class="img-responsive" src="<?= THEME_ASSETS_URI . 'images/logo-divalesi.png' ?>" alt="Divalesi Inverno 2019"></a>
-                </div>
+                <div class="row">
+                    <div class="logo col-8 col-lg-3">
+                        <a href="<?= site_url() ?>" title="Divalesi Inverno 2019"><img class="img-responsive" src="<?= THEME_ASSETS_URI . 'images/logo-divalesi.png' ?>" alt="Divalesi Inverno 2019"></a>
+                    </div>
 
-                <div class="d-none d-sm-block">
-                    <?php divalesi_menu("header-menu"); ?>
-                </div>
+                    <div class="d-none d-sm-block col-7">
+                        <?php divalesi_menu("header-menu"); ?>
+                    </div>
 
-                <div id="mobile-nav-icon" class="d-sm-none d-md-none d-lg-none float-right clearfix">
-                    <div class="cart-icon-mobile float-left">
-                        <a href="<?= wc_get_cart_url() ?>">
+                    <div class="d-none d-sm-block col-2">
+                        <button><i class="fas fa-search"></i></button>
+                        <span class="cart-icon">
                             <i class="fas fa-shopping-cart"></i>
-                            <div><?= WC()->cart->get_cart_contents_count() ?></div>
-                        </a>
+                            <span class="cart-total-amount"><?= WC()->cart->get_cart_contents_count() ?></span>
+                        </span>
+                        <span class="cart-price"><?= WC()->cart->get_cart_total() ?></span>
                     </div>
-                    <div class="burguer-menu">
-                        <span></span>
+
+                    <div id="mobile-nav-icon" class="d-sm-none d-md-none d-lg-none col-4 clearfix">
+                        <div class="burguer-menu float-right">
+                            <span></span>
+                        </div>
+                        <div class="cart-icon-mobile float-right">
+                            <a href="<?= wc_get_cart_url() ?>">
+                                <i class="fas fa-shopping-cart"></i>
+                                <div class="cart-total-amount"><?= WC()->cart->get_cart_contents_count() ?></div>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                </div> 
             </div>  
         </div>
     </header>
