@@ -20,7 +20,13 @@
 
  require "vendor/autoload.php";
 
-// set_time_limit(60);
+// ** Redis settings - Setup attributes to Redis Object Cache can connect on server ** //
+
+/** The address of the Redis host */
+define( 'WP_REDIS_HOST', 'redis' );
+
+/** The password to connect on Redis server */
+define( 'WP_REDIS_PASSWORD', 'redistest' );
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
