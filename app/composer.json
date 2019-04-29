@@ -12,10 +12,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Divalesi\\": "wp-content/themes/divalesi-inverno2019/inc/src/class"
+            "Divalesi\\": "wp-content/themes/divalesi-inverno-2019/inc/src/class"
         }
     },
     "scripts": {
         "test": "vendor/bin/phpunit"
+    },
+    "require": {
+        "predis/predis": "^1.1"
     }
 }
