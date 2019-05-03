@@ -22,7 +22,8 @@ function init_promotions(){
 
     $conf = array(
         "discount_type" => "percent",
-        "discount"      => "50%",
+        "discount"      => "70%",
+        "categories"    => "tenis"
     );
     
     $rules = new Rules($conf);

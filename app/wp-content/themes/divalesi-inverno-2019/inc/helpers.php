@@ -26,7 +26,7 @@ if (!function_exists("salePriceProductListTemplate")){
         if ($sale_price < $regular_price) : ?>      
             <span class="regular-price">De: <?=  wc_price($regular_price) ?></span>
             <div class="label">
-                - <?= round(($sale_price * 100) / $regular_price) ?>%
+                - <?= round( 100 - (($sale_price * 100) / $regular_price)) ?>%
             </div>
         <?php endif;
     }

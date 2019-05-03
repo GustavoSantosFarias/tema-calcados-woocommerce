@@ -16,18 +16,37 @@ class Rules{
     }
 
     public function parseArgs(){
-        $tax_query = "";
+        $tax_query = array();
 
         if($this->setup["categories"] !== false){
-            $tax_query = array(
-                array(
-                    'taxonomy'      => 'product_cat',
-                    'field'         => 'slug',
-                    'terms'         => $this->setup["categories"],
-                    'operator'      => 'IN'
-                )
-            );
+            if(is_array($this->setup["categories"])){
+
+                foreach ($this->setup["categories"] as $category) {
+                    $category_query = array(
+                        'taxonomy'      => 'product_cat',
+                        'field'         => 'slug',
+                        'terms'         => $category,
+                        'operator'      => 'IN'
+                    );
+
+                    array_push($tax_query,$category_query);
+                }
+
+            }else{
+                $tax_query = array(
+                    array(
+                        'taxonomy'      => 'product_cat',
+                        'field'         => 'slug',
+                        'terms'         => $this->setup["categories"],
+                        'operator'      => 'IN'
+                    )
+                );
+            }
+        
         }
+
+        echo "<pre>";
+        print_r($tax_query);
 
         $this->args = array(
             'post_type'   => 'product',
