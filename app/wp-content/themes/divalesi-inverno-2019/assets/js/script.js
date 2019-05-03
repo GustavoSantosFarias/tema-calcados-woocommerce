@@ -1,5 +1,6 @@
 $(document).ready(function(){
     mobileMenu();
+    featuredsProductsCarousel();
 });
 
 function mobileMenu(){
@@ -10,4 +11,18 @@ function mobileMenu(){
     $("#dark-mask").on("click",function(){
         $("#mobile-nav,#dark-mask").removeClass("active");
     });
+}
+
+function featuredsProductsCarousel(){
+    $('.owl-carousel').owlCarousel({
+        dots: true,
+        responsive:{
+            0:{
+                items:2
+            },
+            767:{
+                items:4
+            }
+        }
+    })
 }

@@ -1,4 +1,4 @@
-<li>
+<li class="item">
     <a href="<?= $link ?>" title="<?= $title ?>">
         <div class="product-image">
             <img class="img-fluid" src="<?= $image ?>" alt="<?= $title ?>">

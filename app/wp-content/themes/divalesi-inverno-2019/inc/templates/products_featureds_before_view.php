@@ -8,4 +8,4 @@
         </span>
     </h2>
 
-    <ul class="products">
+    <ul class="products owl-carousel owl-theme">

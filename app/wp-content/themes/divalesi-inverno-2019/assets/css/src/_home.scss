@@ -74,6 +74,47 @@ h2.section-title-home{
     }
 }
 
+#products-featureds{
+    margin-bottom: 30px;
+
+    ul{
+        li{
+            width: auto;
+            padding-top: 10px;
+            margin-bottom: 0;
+
+            .product-info{
+                padding-top: 10px;
+            }
+        }
+    }
+
+    .owl-dots{
+        text-align: center;
+        margin-top: 10px;
+
+        button{
+            display: inline-block;
+            margin: 0 5px;
+            outline: none;
+
+            &.active{
+                span{
+                    background-color: map-get($colors, background-secondary);
+                }
+            }
+
+            span{
+                display: block;
+                width: 13px;
+                height: 13px;
+                background-color: map-get($colors, main);
+                @include borderRadius(50%);
+            }
+        }
+    }
+}
+
 #products-categories{
     ul{
         display: flex;
