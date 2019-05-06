@@ -19,42 +19,37 @@ class Rules{
         $tax_query = array();
 
         if($this->setup["categories"] !== false){
+
+            $tax_query = array(
+                array(
+                    'taxonomy'      => 'product_cat',
+                    'field'         => 'slug',
+                    'terms'         => $this->setup["categories"],
+                )
+            );
+
             if(is_array($this->setup["categories"])){
+                $tax_query = array(
+                    "relation" => "OR",
+                ); 
 
                 foreach ($this->setup["categories"] as $category) {
-                    $category_query = array(
-                        'taxonomy'      => 'product_cat',
-                        'field'         => 'slug',
-                        'terms'         => $category,
-                        'operator'      => 'IN'
-                    );
+                    $query_category = array(
+                        'taxonomy' => 'product_cat',
+                        'field'    => 'slug',
+                        'terms'    => $category
+                    );    
 
-                    array_push($tax_query,$category_query);
+                    array_push($tax_query,$query_category);
                 }
-
-            }else{
-                $tax_query = array(
-                    array(
-                        'taxonomy'      => 'product_cat',
-                        'field'         => 'slug',
-                        'terms'         => $this->setup["categories"],
-                        'operator'      => 'IN'
-                    )
-                );
             }
-        
         }
 
-        echo "<pre>";
-        print_r($tax_query);
-
         $this->args = array(
-            'post_type'   => 'product',
-            'post_status' => 'publish',
-            'orderby'     => 'title',
-            'posts_per_page' => 100,
-            'tax_query'   => $tax_query,
-            'order'       => 'ASC',
+            'post_type'      => 'product',
+            'post_status'    => 'publish',
+            'posts_per_page' => 120,
+            'tax_query'      => $tax_query
         );
     }
 
@@ -62,8 +57,12 @@ class Rules{
         return $this->args;
     }
 
-    public function set(int $id, string $meta_key, $price){
+    public function set(int $id, $price){
         $promotion_price = ($this->setup["discount_type"] == "percent") ? ($price - (($this->setup["discount"] * $price) / 100)) : $price -  $this->setup["discount"];
         update_post_meta($id, '_sale_price', $promotion_price);
+    }
+
+    public function reset(int $id){
+        update_post_meta($id, '_sale_price', '');
     }
 }
