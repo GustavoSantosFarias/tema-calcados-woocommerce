@@ -13,13 +13,13 @@ if(!defined('ABSPATH')){
 define('PLUGIN_DIRECTORY_ABSOLUT',plugin_dir_path(__FILE__));
 
 require PLUGIN_DIRECTORY_ABSOLUT."autoload.php";
+require PLUGIN_DIRECTORY_ABSOLUT."src/helpers.php";
+require PLUGIN_DIRECTORY_ABSOLUT."src/admin-promotion-preferences.php";
 
 use WoocommercePromotions\Rules;
 use WoocommercePromotions\Loop;
 
-
 function init_promotions(){
-
     $conf = array(
         "discount_type" => "percent",
         "discount"      => "10%",
@@ -33,3 +33,17 @@ function init_promotions(){
     $loop->run();
 }
 add_action("init_promotions_divalesi","init_promotions");
+
+add_action("admin_init","promotions_assets_css");   
+function promotions_assets_css(){
+    wp_register_style('bootstrap', plugin_dir_url( __FILE__ ) . 'assets/css/bootstrap.min.css');
+    wp_enqueue_style('bootstrap');
+    wp_register_style('main', plugin_dir_url( __FILE__ ) . 'assets/css/main.min.css');
+    wp_enqueue_style('main');
+}
+
+add_action("admin_init","promotions_assets_js");   
+function promotions_assets_js(){
+    wp_register_script('script', plugin_dir_url( __FILE__ ) . 'assets/js/script.js');
+    wp_enqueue_script('script');
+}

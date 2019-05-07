@@ -10,6 +10,7 @@ class Rules{
         $this->setup = array(
             "categories"    => (isset($config["categories"])) ? $config["categories"] : false,
             "where_apply"   => (isset($config["where_apply"])) ? $config["where_apply"] : "shop",
+            "cart_quantity" => (isset($config["cart_quantity"])) ? $config["cart_quantity"] : false,
             "discount_type" => $config["discount_type"],
             "discount"      => $config["discount"]
         );

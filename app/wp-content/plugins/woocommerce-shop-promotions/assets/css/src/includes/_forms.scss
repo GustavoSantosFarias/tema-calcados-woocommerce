@@ -1,0 +1,57 @@
+.postbox{
+
+    .title{
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+
+    .form-check{
+        margin-bottom: 20px;
+
+        div{
+            margin-bottom: 10px;
+
+            label{
+                margin-left: 20px;
+            }
+        }
+
+        input{
+            width: auto;
+            &[type="radio"],&[type="checkbox"]{
+                margin-top: 3px;
+            }
+        }
+
+        label.checkbox{
+            position: relative;
+            width: 20px;
+            height: 20px;
+            background-color: rgb(199, 197, 197);
+            @include borderRadius(3px);
+
+            &.active{
+                &::after{
+                    position: absolute;
+                    content: "\f147";
+                    color: #179b34;
+                    font: normal 20px/1 dashicons;
+                    font-size: 18px;
+                    text-align: center;
+                    @include absolutCenter("Y");
+                }
+            }
+        }
+    }
+
+    #products-category{
+        display: none;
+        margin-top: 10px;
+
+        &.active{
+            display: block;
+        }
+    }
+
+}

@@ -96,11 +96,3 @@ function shop_filters(){
     require $template;
 }
 add_action("divalesi_shop_filters","shop_filters");
-
-
-add_action( 'before_delete_post', 'wpse_110037_new_posts' );
-add_action( 'save_post', 'wpse_110037_new_posts' );
-
-function wpse_110037_new_posts($post_id){
-    echo "234ifjsoigjsfidojgsoifgojoisg";
-}
