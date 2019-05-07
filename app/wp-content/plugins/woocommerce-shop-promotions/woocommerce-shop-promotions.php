@@ -19,11 +19,12 @@ require PLUGIN_DIRECTORY_ABSOLUT."src/admin-promotion-preferences.php";
 use WoocommercePromotions\Rules;
 use WoocommercePromotions\Loop;
 
-function init_promotions(){
+function init_promotions($post_id){
+
     $conf = array(
-        "discount_type" => "percent",
-        "discount"      => "10%",
-        "categories"    => array("tenis","botas")
+        "discount_type" => get_post_meta($post_id, "_discount_type", true),
+        "discount"      => get_post_meta($post_id, "_discount_value", true),
+        "categories"    => unserialize(get_post_meta($post_id, "_promotion_categories", true))
     );
     
     $rules = new Rules($conf);
@@ -32,7 +33,7 @@ function init_promotions(){
     $loop = new Loop($rules);
     $loop->run();
 }
-add_action("init_promotions_divalesi","init_promotions");
+add_action("init_promotions_divalesi","init_promotions",10,1);
 
 add_action("admin_init","promotions_assets_css");   
 function promotions_assets_css(){

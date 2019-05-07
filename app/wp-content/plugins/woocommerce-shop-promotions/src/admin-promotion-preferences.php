@@ -69,5 +69,7 @@ function register_meta_keys($post_id){
             serialize($_POST["categories"])
         );
     }
+
+    do_action("init_promotions_divalesi", $post_id);
 }  
 add_action('save_post', 'register_meta_keys');
