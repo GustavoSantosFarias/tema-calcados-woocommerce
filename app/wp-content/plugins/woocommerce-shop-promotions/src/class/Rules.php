@@ -3,38 +3,36 @@
 namespace WoocommercePromotions;
 
 class Rules{
-    private $setup;
-    private $args;
+    protected $discount;
+    protected $discount_type;
+    protected $categories;
+    protected $args;
 
-    public function __construct(array $config){
-        $this->setup = array(
-            "categories"    => (isset($config["categories"])) ? $config["categories"] : false,
-            "where_apply"   => (isset($config["where_apply"])) ? $config["where_apply"] : "shop",
-            "cart_quantity" => (isset($config["cart_quantity"])) ? $config["cart_quantity"] : false,
-            "discount_type" => $config["discount_type"],
-            "discount"      => $config["discount"]
-        );
+    public function __construct($config){
+        $this->discount_type = $config["discount_type"];
+        $this->discount      = $config["discount"];
+        $this->categories    = (isset($config["categories"])) ? $config["categories"] : false;
     }
 
     public function parseArgs(){
         $tax_query = array();
 
-        if($this->setup["categories"] !== false){
+        if($this->categories !== false){
 
             $tax_query = array(
                 array(
                     'taxonomy'      => 'product_cat',
                     'field'         => 'slug',
-                    'terms'         => $this->setup["categories"],
+                    'terms'         => $this->categories,
                 )
             );
 
-            if(is_array($this->setup["categories"])){
+            if(is_array($this->categories)){
                 $tax_query = array(
                     "relation" => "OR",
                 ); 
 
-                foreach ($this->setup["categories"] as $category) {
+                foreach ($this->categories as $category) {
                     $query_category = array(
                         'taxonomy' => 'product_cat',
                         'field'    => 'slug',
@@ -56,14 +54,5 @@ class Rules{
 
     public function getArgs(){
         return $this->args;
-    }
-
-    public function set(int $id, $price){
-        $promotion_price = ($this->setup["discount_type"] == "percent") ? ($price - (($this->setup["discount"] * $price) / 100)) : $price -  $this->setup["discount"];
-        update_post_meta($id, '_sale_price', $promotion_price);
-    }
-
-    public function reset(int $id){
-        update_post_meta($id, '_sale_price', '');
     }
 }

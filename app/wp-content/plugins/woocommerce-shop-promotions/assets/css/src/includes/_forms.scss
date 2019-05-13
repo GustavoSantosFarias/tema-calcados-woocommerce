@@ -7,10 +7,14 @@
     }
 
     .form-check{
-        margin-bottom: 20px;
+        margin-bottom: 25px;
 
-        div{
+        div{            
             margin-bottom: 10px;
+
+            &:first-child{
+                margin-bottom: 20px;
+            }
 
             label{
                 margin-left: 20px;
@@ -19,6 +23,7 @@
 
         input{
             width: auto;
+            margin-left: 0;
             &[type="radio"],&[type="checkbox"]{
                 margin-top: 3px;
             }
@@ -29,6 +34,8 @@
             width: 20px;
             height: 20px;
             background-color: rgb(199, 197, 197);
+            float: left;
+            margin-left: 0;
             @include borderRadius(3px);
 
             &.active{
@@ -40,6 +47,20 @@
                     font-size: 18px;
                     text-align: center;
                     @include absolutCenter("Y");
+                }
+
+                &.dot{
+                    &::after{
+                        content: "";
+                        height: 10px;
+                        width: 10px;
+
+                        left: 5px;
+                        top: 10px;
+
+                        @include borderRadius(50%);
+                        background-color: #464646;
+                    }
                 }
             }
         }
@@ -54,4 +75,40 @@
         }
     }
 
+    h5{
+        float: left;
+        font-size: 14px;
+        text-transform: initial;
+        margin-left: 5px;
+        margin-top: 2px;
+    }
+
+    #cart-rules{
+        .form-check{
+    
+            div{
+                margin-bottom: 0;
+            
+                &:first-child{
+                    margin: 10px 0;
+                }
+            }
+            
+            label{
+                margin: 0;
+                display: block;
+                font-size: 12px;
+            }
+        }
+
+        .cart-fields{
+            display: none;
+            padding-bottom: 15px;
+
+            input{
+                clear: both;
+                margin-top: 3px;
+            }
+        }
+    }
 }

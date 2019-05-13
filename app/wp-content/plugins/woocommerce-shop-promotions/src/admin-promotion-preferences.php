@@ -22,34 +22,29 @@ add_action("init","register_post_type_rules");
 
 function meta_box_rules(){
     add_meta_box(
-        'products-rules',           
-        'Products Rules',  
-        'products_rules_html',  
+        'rules',           
+        'Rules',  
+        'rules_html',  
         'promotions'               
     );
-
-    // add_meta_box(
-    //     'cart-rules',           
-    //     'Cart Rules',  
-    //     'cart_rules_html',  
-    //     'promotions'               
-    // );
 }
 add_action('add_meta_boxes', 'meta_box_rules');
 
-function products_rules_html($post){
+function rules_html($post){
     $discount_type = get_post_meta($post->ID, "_discount_type", true);
     $discount_value = get_post_meta($post->ID, "_discount_value", true);
     $categories_promotion = get_post_meta($post->ID, "_promotion_categories", true) ? unserialize(get_post_meta($post->ID, "_promotion_categories", true)) : "";
 
-    require PLUGIN_DIRECTORY_ABSOLUT."templates/meta_boxes_products.php";
-}
-
-function cart_rules_html($post){
-    require PLUGIN_DIRECTORY_ABSOLUT."templates/meta_boxes_cart.php";
+    require PLUGIN_DIRECTORY_ABSOLUT."templates/meta_boxes_rules.php";
 }
 
 function register_meta_keys($post_id){
+    update_post_meta(
+        $post_id, 
+        '_type_promotion',
+        $_POST['type-promotion']
+    );
+
     update_post_meta(
         $post_id,
         '_discount_value',
@@ -62,6 +57,12 @@ function register_meta_keys($post_id){
         $_POST['discount-type']
     );
 
+    update_post_meta(
+        $post_id,
+        '_type_promotion',
+        $_POST["type-promotion"]
+    );
+
     if (isset($_POST["categories"]) && !empty($_POST["categories"])) {
         update_post_meta(
             $post_id,
@@ -70,6 +71,21 @@ function register_meta_keys($post_id){
         );
     }
 
+    if ($_POST["type-promotion"] == "cart") {
+        update_post_meta(
+            $post_id,
+            '_product_quantity_min',
+            $_POST["product-quantity-min"]
+        );
+
+        update_post_meta(
+            $post_id,
+            '_product_quantity_max',
+            $_POST["product-quantity-max"]
+        );
+    }
+    
     do_action("init_promotions_divalesi", $post_id);
 }  
-add_action('save_post', 'register_meta_keys');
+add_action( 'publish_post', 'register_meta_keys', 10, 1);
+add_action( 'post_updated', 'register_meta_keys', 10, 1);

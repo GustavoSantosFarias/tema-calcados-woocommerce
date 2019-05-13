@@ -96,3 +96,9 @@ function shop_filters(){
     require $template;
 }
 add_action("divalesi_shop_filters","shop_filters");
+
+// function price_cart($price, $cart_item, $cart_item_key){
+//     echo "<pre>";
+//     print_r($cart_item);
+// }
+// add_filter( 'woocommerce_cart_item_price', 'price_cart', 10, 3 );

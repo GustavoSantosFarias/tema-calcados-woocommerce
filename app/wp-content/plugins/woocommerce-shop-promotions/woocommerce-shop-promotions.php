@@ -16,22 +16,23 @@ require PLUGIN_DIRECTORY_ABSOLUT."autoload.php";
 require PLUGIN_DIRECTORY_ABSOLUT."src/helpers.php";
 require PLUGIN_DIRECTORY_ABSOLUT."src/admin-promotion-preferences.php";
 
-use WoocommercePromotions\Rules;
-use WoocommercePromotions\Loop;
+use WoocommercePromotions\Products;
+use WoocommercePromotions\Cart;
 
+function cart_rule($price, $cart_item, $cart_item_key){
+    return 35;
+}
+add_filter('woocommerce_cart_item_price', 'cart_rule',10,3);
 function init_promotions($post_id){
-
     $conf = array(
         "discount_type" => get_post_meta($post_id, "_discount_type", true),
         "discount"      => get_post_meta($post_id, "_discount_value", true),
         "categories"    => unserialize(get_post_meta($post_id, "_promotion_categories", true))
     );
-    
-    $rules = new Rules($conf);
-    $rules->parseArgs();
 
-    $loop = new Loop($rules);
-    $loop->run();
+    $promotion = new Products($conf);
+    $promotion->run();
+    
 }
 add_action("init_promotions_divalesi","init_promotions",10,1);
 

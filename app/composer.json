@@ -19,6 +19,7 @@
         "test": "vendor/bin/phpunit"
     },
     "require": {
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "hutnikau/job-scheduler": "^0.6.1"
     }
 }
