@@ -20,7 +20,11 @@
  * @package WordPress
  */
 
- require "vendor/autoload.php";
+require "vendor/autoload.php";
+
+define('WP_HOME','http://localhost:8000');
+define('WP_SITEURL','http://localhost:8000');
+define('FS_METHOD', 'direct' );
 
 // ** Redis settings - Setup attributes to Redis Object Cache can connect on server ** //
 
@@ -89,7 +93,7 @@ $table_prefix = 'div';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define( 'WP_DEBUG', true );
+define( 'WP_DEBUG', false );
 
 // If we're behind a proxy server and using HTTPS, we need to alert Wordpress of that fact
 // see also http://codex.wordpress.org/Administration_Over_SSL#Using_a_Reverse_Proxy

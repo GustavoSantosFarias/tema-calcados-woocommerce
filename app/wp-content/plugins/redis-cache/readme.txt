@@ -4,7 +4,8 @@ Donate link: https://www.paypal.me/tillkruss
 Tags: redis, predis, phpredis, hhvm, pecl, caching, cache, object cache, performance, replication, clustering
 Requires at least: 3.3
 Tested up to: 5.2
-Stable tag: 1.4.2
+Requires PHP: 5.4
+Stable tag: 1.4.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -178,6 +179,14 @@ The following commands are supported:
 
 
 == Changelog ==
+
+= 1.4.3 =
+
+  * Require PHP 5.4 or newer
+  * Use pretty print in diagnostics
+  * Throw exception if Redis library is missing
+  * Fixed cache not flushing for some users
+  * Fixed admin issues when `WP_REDIS_DISABLED` is `false`
 
 = 1.4.2 =
 

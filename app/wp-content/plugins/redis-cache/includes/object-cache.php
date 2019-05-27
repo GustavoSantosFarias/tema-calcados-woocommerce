@@ -3,7 +3,7 @@
 Plugin Name: Redis Object Cache Drop-In
 Plugin URI: http://wordpress.org/plugins/redis-cache/
 Description: A persistent object cache backend powered by Redis. Supports Predis, PhpRedis, HHVM, replication, clustering and WP-CLI.
-Version: 1.4.2
+Version: 1.4.3
 Author: Till Krüss
 Author URI: https://till.im/
 License: GPLv3
@@ -185,9 +185,6 @@ function wp_cache_init()
         $wp_object_cache = new WP_Object_Cache($fail_gracefully);
     }
 }
-
-// wp_cache_switch_to_blog
-// wp_cache_switch_to_blog( get_current_blog_id() );
 
 /**
  * Replaces a value in cache.
@@ -472,8 +469,16 @@ class WP_Object_Cache
 
                 // Load bundled Predis library
                 if (! class_exists('Predis\Client')) {
-                    $plugin_dir = defined('WP_PLUGIN_DIR') ? WP_PLUGIN_DIR : WP_CONTENT_DIR . '/plugins';
-                    require_once $plugin_dir . '/redis-cache/includes/predis/autoload.php';
+                    $predis = sprintf(
+                        '%s/redis-cache/includes/predis/autoload.php',
+                        defined('WP_PLUGIN_DIR') ? WP_PLUGIN_DIR : WP_CONTENT_DIR . '/plugins'
+                    );
+
+                    if (file_exists($predis)) {
+                        require_once $predis;
+                    } else {
+                        throw new Exception('Predis library not found. Re-install Redis Cache plugin or delete object-cache.php.');
+                    }
                 }
 
                 $options = array();
@@ -1073,7 +1078,7 @@ class WP_Object_Cache
         $salt = defined('WP_CACHE_KEY_SALT') ? trim(WP_CACHE_KEY_SALT) : '';
         $prefix = in_array($group, $this->global_groups) ? $this->global_prefix : $this->blog_prefix;
 
-        return "{{$salt}{$prefix}}:{$group}:{$key}";
+        return "{$salt}{$prefix}:{$group}:{$key}";
     }
 
     /**
