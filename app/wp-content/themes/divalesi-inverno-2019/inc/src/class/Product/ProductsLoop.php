@@ -19,7 +19,6 @@ class ProductsLoop extends AbstractLoop{
      * @param products_per_page number of products per page. Is recommended always pass this parameter to make the products loop more fast.
      * @param terms feature of the products that you want filter in products loop
      */
-
     public function __construct(string $path_template = "",int $products_per_page = -1,string $terms = ""){
         parent::__construct($path_template);
 
@@ -73,7 +72,6 @@ class ProductsLoop extends AbstractLoop{
      * @return args array.
      */
     private function args(){
-
         if (is_product_category()) {
             global $wp_query;
             $category_slug = $wp_query->query_vars['product_cat'];
@@ -100,19 +98,19 @@ class ProductsLoop extends AbstractLoop{
 
         $args = array(
             'post_type'      => 'product',
-            'post_status' => 'publish',
+            'post_status'    => 'publish',
             'posts_per_page' => $this->products_per_page,
-            'paged' => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
-            'tax_query' => isset($tax_query) ? $tax_query : array(),
-            'orderby' => 'title',
-            'order'   => 'ASC',
-            'meta_query' => array(
+            'paged'          => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
+            'tax_query'      => isset($tax_query) ? $tax_query : array(),
+            'orderby'        => 'title',
+            'order'          => 'ASC',
+            'meta_query'     => array(
                 array(
                     'key'     => '_product_attributes',
                     'compare' => 'LIKE',
                 ),
             ),
-            'post__in' => ''
+            'post__in'       => ''
         );
 
         return $args;

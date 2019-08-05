@@ -30,6 +30,34 @@ function meta_box_rules(){
 }
 add_action('add_meta_boxes', 'meta_box_rules');
 
+add_action('admin_menu', 'woocommerce_promotions_setup_menu');
+function woocommerce_promotions_setup_menu(){
+    add_menu_page('Woocommerce Promotions', 'Woocommerce Promotions', 'manage_options', 'woocommerce-promotions', 'woocommerce_promotions_list_template', 'dashicons-cart' );
+}
+
+function woocommerce_promotions_list_template(){
+    $args = array(
+        'post_type'      => 'promotions',
+        'post_status'    => array('publish','draft'),
+        'posts_per_page' => 120
+    );
+
+    $loop = new WP_Query($args);
+
+    require_once PLUGIN_DIRECTORY_ABSOLUT."templates/promotions_list.php";
+}
+
+function hide_permalink($return,$post_id){
+    $post_type = get_post_type($post_id);
+
+    if($post_type == "promotions"){
+        return "";
+    }
+
+    return $return;
+}
+add_filter( 'get_sample_permalink_html', 'hide_permalink', 10, 5 );
+
 function rules_html($post){
     $discount_type = get_post_meta($post->ID, "_discount_type", true);
     $discount_value = get_post_meta($post->ID, "_discount_value", true);
@@ -70,22 +98,8 @@ function register_meta_keys($post_id){
             serialize($_POST["categories"])
         );
     }
-
-    if ($_POST["type-promotion"] == "cart") {
-        update_post_meta(
-            $post_id,
-            '_product_quantity_min',
-            $_POST["product-quantity-min"]
-        );
-
-        update_post_meta(
-            $post_id,
-            '_product_quantity_max',
-            $_POST["product-quantity-max"]
-        );
-    }
     
-    do_action("init_promotions_divalesi", $post_id);
+    do_action("init_plugin_promotions", $post_id);
 }  
 add_action( 'publish_post', 'register_meta_keys', 10, 1);
 add_action( 'post_updated', 'register_meta_keys', 10, 1);
