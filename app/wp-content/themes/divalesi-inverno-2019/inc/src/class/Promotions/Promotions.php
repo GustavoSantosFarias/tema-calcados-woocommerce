@@ -26,7 +26,7 @@ class Promotions {
                 $variations = (new WC_Product_Variable(get_the_ID()))->get_available_variations(get_the_ID());
             
                 foreach ($variations as $variation) {
-                    $promotion_price = $variation["display_regular_price"] * ((100 - $discount)/100);
+                    $promotion_price = PromotionsDiscount::calculate($variation["display_regular_price"],$discount);
 
                     update_post_meta($variation["variation_id"], '_sale_price', $promotion_price);
                     wc_delete_product_transients($variation["variation_id"]);
