@@ -26,6 +26,11 @@ class Promotions {
                 $variations = (new WC_Product_Variable(get_the_ID()))->get_available_variations(get_the_ID());
             
                 foreach ($variations as $variation) {
+                    if(isset($_GET["reset"])){
+                        update_post_meta($variation["variation_id"], '_sale_price', '');
+                        continue;
+                    }
+
                     $promotion_price = PromotionsDiscount::calculate($variation["display_regular_price"],$discount,$rule["type"][0]);
 
                     update_post_meta($variation["variation_id"], '_sale_price', $promotion_price);
