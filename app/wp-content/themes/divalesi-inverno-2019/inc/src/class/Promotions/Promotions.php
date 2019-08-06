@@ -5,7 +5,10 @@ namespace Divalesi\Promotions;
 use \WP_Query;
 use \WC_Product_Variable;
 
-class Promotions {
+class Promotions 
+{
+    use Traits\Debug;
+
     private $args;
     private $rules;
 
@@ -27,7 +30,9 @@ class Promotions {
             
                 foreach ($variations as $variation) {
                     if(isset($_GET["reset"])){
-                        update_post_meta($variation["variation_id"], '_sale_price', '');
+                        $this->reset($variation["variation_id"]);
+                        $this->formated($variation,$discount);
+
                         continue;
                     }
 
@@ -35,8 +40,10 @@ class Promotions {
 
                     update_post_meta($variation["variation_id"], '_sale_price', $promotion_price);
                     wc_delete_product_transients($variation["variation_id"]);
+
+                    $this->formated($variation,$discount);
                 }
-            
+
                 wc_delete_product_transients(get_the_ID());
             }
         }
@@ -66,4 +73,9 @@ class Promotions {
         }
     }
 
+
+    private function reset($variation_id){
+        update_post_meta($variation_id, '_sale_price', '');
+        wc_delete_product_transients($variation_id);
+    }
 }

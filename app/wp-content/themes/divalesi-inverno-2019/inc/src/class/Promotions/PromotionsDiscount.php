@@ -1,7 +1,8 @@
 <?php 
 namespace Divalesi\Promotions;
 
-class PromotionsDiscount {
+class PromotionsDiscount 
+{
 
     public static function calculate($regular_price,$discount_value, $discount_type = "PERCENT"){
         if($discount_type !== "PERCENT"){

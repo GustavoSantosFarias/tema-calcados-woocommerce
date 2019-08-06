@@ -1,7 +1,8 @@
 <?php
 namespace Divalesi\Promotions;
 
-class ParseCsv {
+class ParseCsv 
+{
     private $path_csv;
     private $structure;
 
