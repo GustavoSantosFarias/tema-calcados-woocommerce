@@ -40,11 +40,11 @@ class Promotions
 
                     update_post_meta($variation["variation_id"], '_sale_price', $promotion_price);
                     wc_delete_product_transients($variation["variation_id"]);
-
-                    $this->formated($variation,$discount);
                 }
 
                 wc_delete_product_transients(get_the_ID());
+
+                $this->formated($variation,$discount);
             }
         }
     }
