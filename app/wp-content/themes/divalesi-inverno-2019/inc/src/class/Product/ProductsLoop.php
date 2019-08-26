@@ -17,7 +17,9 @@ class ProductsLoop extends AbstractLoop{
     /**
      * @param path_template path to template loop
      * @param products_per_page number of products per page. Is recommended always pass this parameter to make the products loop more fast.
-     * @param terms feature of the products that you want filter in products loop
+     * @param terms feature products that you want filter in products loop
+     * 
+     * * Set products per page, terms and throw in filters attribute all available filters by singleton pattern
      */
     public function __construct(string $path_template = "",int $products_per_page = -1,string $terms = ""){
         parent::__construct($path_template);
@@ -28,7 +30,7 @@ class ProductsLoop extends AbstractLoop{
     }
 
     /**
-     * Get products with regular price, sale price, main image and first gallery image.
+     * Return the product loop template with products regular price, sale price, main image and first gallery image.
      * 
      * @return products template loop.
      */
@@ -43,10 +45,12 @@ class ProductsLoop extends AbstractLoop{
                 $variation = (new WC_Product_Variable(get_the_ID()))->get_available_variations(get_the_ID());
                 $gallery_image_id = $product->get_gallery_image_ids();
 
+                //Verify max filters length to add new filter based on variation attribute, like p_size and pa_color.
                 if(count($this->filters->get()) < 7){
                     $this->filters->set($variation);
                 }
 
+                //Verify if URI doesnt have filters paramns and the current product in the loop doesnt match with them.
                 if (!empty($_GET) && !$this->filters->by()) {
                     continue;
                 }

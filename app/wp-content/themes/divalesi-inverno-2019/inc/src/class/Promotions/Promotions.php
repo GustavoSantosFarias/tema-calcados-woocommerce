@@ -16,6 +16,11 @@ class Promotions
         $this->rules = $rules->data();
     }
 
+    /**
+     * 
+     * * Run all promotions that were define in promotions CSV 
+     * 
+     */
     public function run(){
         foreach ($this->rules as $discount => $rule) {
             $this->setArgs($rule);
@@ -29,6 +34,10 @@ class Promotions
                 $variations = (new WC_Product_Variable(get_the_ID()))->get_available_variations(get_the_ID());
             
                 foreach ($variations as $variation) {
+
+                    /**
+                     * * Check the GET variable in URI to reset only the promotions defined in promotions CSV
+                     */
                     if(isset($_GET["reset"])){
                         $this->reset($variation["variation_id"]);
                         $this->formated($variation,$discount);
@@ -49,6 +58,11 @@ class Promotions
         }
     }
 
+    /**
+     ** Set the rules to fetching products that will on promotion
+     * @param array $rule - The rule line defined in promotions CSV
+     * @return array - set the args attribute with the promotion rule
+     */
     private function setArgs(array $rule){
         $this->args = array(
             'post_type'      => 'product',
@@ -73,7 +87,10 @@ class Promotions
         }
     }
 
-
+    /**
+     ** Reset the variation sale price to 'empty'
+     * @param string $variation_id - variation id to reset it sale price 
+     */
     private function reset($variation_id){
         update_post_meta($variation_id, '_sale_price', '');
         wc_delete_product_transients($variation_id);

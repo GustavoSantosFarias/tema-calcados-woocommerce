@@ -1,10 +1,6 @@
 <?php
-
 namespace Divalesi\Promotions\Traits;
 
-/**
- * 
- */
 trait Debug
 {
     public function formated($variation,$discount){
