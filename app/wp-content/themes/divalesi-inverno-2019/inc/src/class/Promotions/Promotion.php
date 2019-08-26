@@ -5,7 +5,7 @@ namespace Divalesi\Promotions;
 use \WP_Query;
 use \WC_Product_Variable;
 
-class Promotions 
+class Promotion 
 {
     use Traits\Debug;
 
@@ -45,7 +45,7 @@ class Promotions
                         continue;
                     }
 
-                    $promotion_price = PromotionsDiscount::calculate($variation["display_regular_price"],$discount,$rule["type"][0]);
+                    $promotion_price = PromotionDiscount::calculate($variation["display_regular_price"],$discount,$rule["type"][0]);
 
                     update_post_meta($variation["variation_id"], '_sale_price', $promotion_price);
                     wc_delete_product_transients($variation["variation_id"]);
