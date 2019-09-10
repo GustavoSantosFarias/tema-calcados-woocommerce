@@ -46,10 +46,18 @@ class Loop
 
                 $promotion_price = $this->discount->calculate($variation["display_regular_price"]);
 
+                /**
+                 * * Update the sale price on database to persist this data
+                 * * Also, we need clear the variation transient cache to apply the sale price value on it
+                 * * That's the most important piece of promotion code
+                 */
                 update_post_meta($variation["variation_id"], '_sale_price', $promotion_price);
                 wc_delete_product_transients($variation["variation_id"]);
             }
 
+            /**
+             * * Clear the product transient cache to apply sale price on it and its childrens posts
+             */
             wc_delete_product_transients(get_the_ID());
 
             $this->formated($variation,$this->discount->get());
