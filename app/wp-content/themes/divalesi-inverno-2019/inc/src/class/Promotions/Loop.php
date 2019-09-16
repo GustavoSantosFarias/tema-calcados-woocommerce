@@ -56,7 +56,7 @@ class Loop
             }
 
             /**
-             * * Clear the product transient cache to apply sale price on it and its childrens posts
+             * * Clear product transient cache to apply sale price on it and its childrens posts
              */
             wc_delete_product_transients(get_the_ID());
 

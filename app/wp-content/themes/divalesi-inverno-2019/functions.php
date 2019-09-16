@@ -1,5 +1,5 @@
 <?php
-use Divalesi\Product\ProductsLoop;
+use Divalesi\Product\Loop;
 use Divalesi\Category\CategoriesLoop;
 use Divalesi\Filter\Filter;
 
@@ -27,7 +27,7 @@ add_action("init","load_setup_theme");
 
 function products_featureds(){
     $template = THEME_TEMPLATES_DIR."products_featureds_view.php";
-    $loop_products = new ProductsLoop($template,-1,"featured");
+    $loop_products = new Loop($template,-1,"featured");
 
     $loop_products->loop();
 }
@@ -81,7 +81,7 @@ add_action("content_home","home");
 
 function products_loop(){
     $template = THEME_TEMPLATES_DIR."products_shop_view.php";
-    $loop_products = new ProductsLoop($template,12);
+    $loop_products = new Loop($template,12);
 
     $loop_products->loop(12);
 }
